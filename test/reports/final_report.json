@@ -1,0 +1,311 @@
+[
+  {
+    "test_name": "test_payout_webhook_success",
+    "status": "PASSED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/payout/initiate",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "accountType": "savings",
+          "amount": "146",
+          "mode": "IMPS",
+          "ifscCode": "HDFC0002671",
+          "accountNo": "90171996274",
+          "beneName": "Test User",
+          "beneAddress": "Testing",
+          "beneEmail": "test@gmail.com",
+          "beneMobile": "9000000000",
+          "orderId": "ORD100dc356d2"
+        },
+        "status_code": 201,
+        "response_body": {
+          "RESPONSE_CODE": "500",
+          "UTR": "",
+          "RESPONSE_STATUS": "SETTLEMENT_PROCESS",
+          "ORDER_ID": "ORD100dc356d2",
+          "AMOUNT": "146",
+          "RESPONSE_MESSAGE": "Settlement Processing.",
+          "AID": "",
+          "TRANSACTION_ID": "KWC52ded3557e774a",
+          "MERCHANT_REF_NO": "ORD100dc356d2"
+        },
+        "response_time": 11.381
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "RESPONSE_CODE": "000",
+          "UTR": "UTR594bd958",
+          "RESPONSE_STATUS": "SETTLED",
+          "ORDER_ID": "ORD100dc356d2",
+          "AMOUNT": "146",
+          "RESPONSE_MESSAGE": "Webhook SETTLED",
+          "MERCHANT_REF_NO": "ORD100dc356d2"
+        },
+        "status_code": 200,
+        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/a64244dd-9fac-4e62-ad85-55e16150500d\">Change response in Webhook.site</a>.",
+        "response_time": 1.846
+      }
+    ]
+  },
+  {
+    "test_name": "test_payout_webhook_failed",
+    "status": "PASSED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/payout/initiate",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "accountType": "savings",
+          "amount": "253",
+          "mode": "IMPS",
+          "ifscCode": "HDFC0002671",
+          "accountNo": "80658452324",
+          "beneName": "Test User",
+          "beneAddress": "Testing",
+          "beneEmail": "test@gmail.com",
+          "beneMobile": "9000000000",
+          "orderId": "ORD865848f661"
+        },
+        "status_code": 201,
+        "response_body": {
+          "RESPONSE_CODE": "500",
+          "UTR": "",
+          "RESPONSE_STATUS": "SETTLEMENT_PROCESS",
+          "ORDER_ID": "ORD865848f661",
+          "AMOUNT": "253",
+          "RESPONSE_MESSAGE": "Settlement Processing.",
+          "AID": "",
+          "TRANSACTION_ID": "KWC59c9d268983c4b",
+          "MERCHANT_REF_NO": "ORD865848f661"
+        },
+        "response_time": 1.276
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "RESPONSE_CODE": "999",
+          "UTR": "UTRb3f9d1d4",
+          "RESPONSE_STATUS": "FAILED",
+          "ORDER_ID": "ORD865848f661",
+          "AMOUNT": "253",
+          "RESPONSE_MESSAGE": "Webhook FAILED",
+          "MERCHANT_REF_NO": "ORD865848f661"
+        },
+        "status_code": 200,
+        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/a64244dd-9fac-4e62-ad85-55e16150500d\">Change response in Webhook.site</a>.",
+        "response_time": 1.451
+      }
+    ]
+  },
+  {
+    "test_name": "test_webhook_invalid_order",
+    "status": "PASSED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "RESPONSE_CODE": "000",
+          "UTR": "UTRdf0cbfa8",
+          "RESPONSE_STATUS": "SETTLED",
+          "ORDER_ID": "INVALID123",
+          "AMOUNT": "100",
+          "RESPONSE_MESSAGE": "Webhook SETTLED",
+          "MERCHANT_REF_NO": "INVALID123"
+        },
+        "status_code": 404,
+        "response_body": {
+          "statusCode": 404,
+          "errors": "Not Found",
+          "data": null
+        },
+        "response_time": 1.142
+      }
+    ]
+  },
+  {
+    "test_name": "test_webhook_duplicate",
+    "status": "PASSED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/payout/initiate",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "accountType": "savings",
+          "amount": "222",
+          "mode": "IMPS",
+          "ifscCode": "HDFC0002671",
+          "accountNo": "17200368833",
+          "beneName": "Test User",
+          "beneAddress": "Testing",
+          "beneEmail": "test@gmail.com",
+          "beneMobile": "9000000000",
+          "orderId": "ORD0144b5fee8"
+        },
+        "status_code": 201,
+        "response_body": {
+          "RESPONSE_CODE": "500",
+          "UTR": "",
+          "RESPONSE_STATUS": "SETTLEMENT_PROCESS",
+          "ORDER_ID": "ORD0144b5fee8",
+          "AMOUNT": "222",
+          "RESPONSE_MESSAGE": "Settlement Processing.",
+          "AID": "",
+          "TRANSACTION_ID": "KWCc07740b5780b41",
+          "MERCHANT_REF_NO": "ORD0144b5fee8"
+        },
+        "response_time": 1.249
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "RESPONSE_CODE": "000",
+          "UTR": "UTR95807048",
+          "RESPONSE_STATUS": "SETTLED",
+          "ORDER_ID": "ORD0144b5fee8",
+          "AMOUNT": "222",
+          "RESPONSE_MESSAGE": "Webhook SETTLED",
+          "MERCHANT_REF_NO": "ORD0144b5fee8"
+        },
+        "status_code": 200,
+        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/a64244dd-9fac-4e62-ad85-55e16150500d\">Change response in Webhook.site</a>.",
+        "response_time": 1.526
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "RESPONSE_CODE": "000",
+          "UTR": "UTRc7e29918",
+          "RESPONSE_STATUS": "SETTLED",
+          "ORDER_ID": "ORD0144b5fee8",
+          "AMOUNT": "222",
+          "RESPONSE_MESSAGE": "Webhook SETTLED",
+          "MERCHANT_REF_NO": "ORD0144b5fee8"
+        },
+        "status_code": 200,
+        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/a64244dd-9fac-4e62-ad85-55e16150500d\">Change response in Webhook.site</a>.",
+        "response_time": 4.204
+      }
+    ]
+  },
+  {
+    "test_name": "test_webhook_status_change",
+    "status": "PASSED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/payout/initiate",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "accountType": "savings",
+          "amount": "352",
+          "mode": "IMPS",
+          "ifscCode": "HDFC0002671",
+          "accountNo": "95023148346",
+          "beneName": "Test User",
+          "beneAddress": "Testing",
+          "beneEmail": "test@gmail.com",
+          "beneMobile": "9000000000",
+          "orderId": "ORDd67cc5789a"
+        },
+        "status_code": 201,
+        "response_body": {
+          "RESPONSE_CODE": "500",
+          "UTR": "",
+          "RESPONSE_STATUS": "SETTLEMENT_PROCESS",
+          "ORDER_ID": "ORDd67cc5789a",
+          "AMOUNT": "352",
+          "RESPONSE_MESSAGE": "Settlement Processing.",
+          "AID": "",
+          "TRANSACTION_ID": "KWCbac59c5258f641",
+          "MERCHANT_REF_NO": "ORDd67cc5789a"
+        },
+        "response_time": 1.24
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "RESPONSE_CODE": "000",
+          "UTR": "UTRe1371718",
+          "RESPONSE_STATUS": "SETTLED",
+          "ORDER_ID": "ORDd67cc5789a",
+          "AMOUNT": "352",
+          "RESPONSE_MESSAGE": "Webhook SETTLED",
+          "MERCHANT_REF_NO": "ORDd67cc5789a"
+        },
+        "status_code": 200,
+        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/a64244dd-9fac-4e62-ad85-55e16150500d\">Change response in Webhook.site</a>.",
+        "response_time": 1.48
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
+        "method": "POST",
+        "headers": {
+          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "RESPONSE_CODE": "999",
+          "UTR": "UTR3b1a4255",
+          "RESPONSE_STATUS": "FAILED",
+          "ORDER_ID": "ORDd67cc5789a",
+          "AMOUNT": "352",
+          "RESPONSE_MESSAGE": "Webhook FAILED",
+          "MERCHANT_REF_NO": "ORDd67cc5789a"
+        },
+        "status_code": 200,
+        "response_body": {
+          "status": false,
+          "message": "Transaction already finalized. Telegram notification sent."
+        },
+        "response_time": 2.678
+      }
+    ]
+  }
+]
