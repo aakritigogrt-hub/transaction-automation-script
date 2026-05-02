@@ -47,8 +47,8 @@ def send_request(request, method, url, headers=None, payload=None):
     log = {
         "url": url,
         "request": payload,
-        "status_code": response.status_code,
-        "response": response.text
+        # "status_code": response.status_code,
+        # "response": response.text
     }
 
     print("LOG ADDED:", log)   # <-- YOUR PRINT

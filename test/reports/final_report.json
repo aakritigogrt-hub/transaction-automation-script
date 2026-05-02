@@ -1,310 +1,163 @@
 [
   {
-    "test_name": "test_payout_webhook_success",
+    "test_name": "test_full_chargeback_flow",
     "status": "PASSED",
     "api_logs": [
       {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/payout/initiate",
+        "url": "https://staging.admin.kwicpe.com/api/api/v1/admin/auth/login",
         "method": "POST",
         "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
-          "Content-Type": "application/json"
+          "accept": "application/json",
+          "content-type": "application/json",
+          "x-skip": "true"
         },
         "request_body": {
-          "accountType": "savings",
-          "amount": "146",
-          "mode": "IMPS",
-          "ifscCode": "HDFC0002671",
-          "accountNo": "90171996274",
-          "beneName": "Test User",
-          "beneAddress": "Testing",
-          "beneEmail": "test@gmail.com",
-          "beneMobile": "9000000000",
-          "orderId": "ORD100dc356d2"
+          "email": "super@gmail.com",
+          "password": "Admin@12345",
+          "recaptchaToken": "dummy_token"
         },
         "status_code": 201,
         "response_body": {
-          "RESPONSE_CODE": "500",
-          "UTR": "",
-          "RESPONSE_STATUS": "SETTLEMENT_PROCESS",
-          "ORDER_ID": "ORD100dc356d2",
-          "AMOUNT": "146",
-          "RESPONSE_MESSAGE": "Settlement Processing.",
-          "AID": "",
-          "TRANSACTION_ID": "KWC52ded3557e774a",
-          "MERCHANT_REF_NO": "ORD100dc356d2"
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzc3MTcxNTYsImV4cCI6MTc3NzcyMDc1NiwiaXNzIjoia3dpY3BlIn0.TqxtR_hCWv9Rd0IP22YG0lkpCK842OtDpuHg7-nm5H4",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzc3MTcxNTYsImV4cCI6MTc3NzcyNDM1NiwiaXNzIjoia3dpY3BlIn0.JSUcGD5jfAK5H_2L5_-DxI9LMiHz27OPsaD81jBi-HE",
+          "refreshTokenExpiry": "7200000",
+          "user": {
+            "id": "880bfbdf-6ed6-11f0-ad86-ae179a0ae9a3",
+            "name": "super",
+            "email": "super@gmail.com",
+            "phoneNumber": "9876543210",
+            "role": "super",
+            "status": 1,
+            "createdAt": "2025-08-01T12:53:33.000Z",
+            "updatedAt": "2026-04-22T11:03:42.714Z",
+            "validateVpa": false,
+            "passwordUpdatedAt": null,
+            "updatedOtp": "924940",
+            "autoSwitch": false,
+            "otherCharges": 0,
+            "api_version": 1,
+            "alias": "super",
+            "penaltyAmount": "2000",
+            "payoutFormAccess": false,
+            "autoSwitchPayout": false,
+            "ipRequired": false,
+            "isSlabSystem": false,
+            "UserStatistics": {
+              "id": "43ba54c6-d6b4-4dbb-8584-0a377f1f02c6",
+              "userId": "880bfbdf-6ed6-11f0-ad86-ae179a0ae9a3",
+              "totalPayin": "0",
+              "totalPayout": "0",
+              "totalPayinComission": "0",
+              "totalPayoutComission": "0",
+              "rollingReserve": "1",
+              "rollingReserveBalance": "0",
+              "rollingReserveDays": 90,
+              "lastUpdatedAt": "2025-09-15T05:28:33.536Z",
+              "recoveredAmount": 0
+            },
+            "PricingConfig": {
+              "id": "80c346e7-cb40-436a-a965-ecdde0c120cd",
+              "userId": "880bfbdf-6ed6-11f0-ad86-ae179a0ae9a3",
+              "providerPayinComission": "0",
+              "providerPayoutComission": "0",
+              "adminPayinComission": "0",
+              "adminPayoutComission": "0",
+              "maxPayinAmount": "0",
+              "maxPayoutAmount": "0",
+              "minPayinAmount": "0",
+              "minPayoutAmount": "0",
+              "updatedAt": "2025-09-15T05:28:33.536Z"
+            }
+          }
         },
-        "response_time": 11.381
+        "response_time": 1.616
       },
       {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
+        "url": "https://staging.admin.kwicpe.com/api/api/v1/payments/requests",
         "method": "POST",
         "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
+          "api-key": "518ee249a49898b9da10.q2FiCqdH4CHFnxLxu47yRpjIN50ZUjz8HGzU",
           "Content-Type": "application/json"
         },
         "request_body": {
-          "RESPONSE_CODE": "000",
-          "UTR": "UTR594bd958",
-          "RESPONSE_STATUS": "SETTLED",
-          "ORDER_ID": "ORD100dc356d2",
-          "AMOUNT": "146",
-          "RESPONSE_MESSAGE": "Webhook SETTLED",
-          "MERCHANT_REF_NO": "ORD100dc356d2"
-        },
-        "status_code": 200,
-        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/a64244dd-9fac-4e62-ad85-55e16150500d\">Change response in Webhook.site</a>.",
-        "response_time": 1.846
-      }
-    ]
-  },
-  {
-    "test_name": "test_payout_webhook_failed",
-    "status": "PASSED",
-    "api_logs": [
-      {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/payout/initiate",
-        "method": "POST",
-        "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
-          "Content-Type": "application/json"
-        },
-        "request_body": {
-          "accountType": "savings",
-          "amount": "253",
-          "mode": "IMPS",
-          "ifscCode": "HDFC0002671",
-          "accountNo": "80658452324",
-          "beneName": "Test User",
-          "beneAddress": "Testing",
-          "beneEmail": "test@gmail.com",
-          "beneMobile": "9000000000",
-          "orderId": "ORD865848f661"
+          "orderId": "ORDa150bf7a",
+          "amount": "300",
+          "customerEmail": "user8b4bc821@yopmail.com",
+          "customerMobile": "9841693072",
+          "customerName": "sonitma",
+          "transactionMode": "UPI_INTENT",
+          "vpa": "user58a0ed@ybl"
         },
         "status_code": 201,
         "response_body": {
-          "RESPONSE_CODE": "500",
-          "UTR": "",
-          "RESPONSE_STATUS": "SETTLEMENT_PROCESS",
-          "ORDER_ID": "ORD865848f661",
-          "AMOUNT": "253",
-          "RESPONSE_MESSAGE": "Settlement Processing.",
-          "AID": "",
-          "TRANSACTION_ID": "KWC59c9d268983c4b",
-          "MERCHANT_REF_NO": "ORD865848f661"
-        },
-        "response_time": 1.276
-      },
-      {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
-        "method": "POST",
-        "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
-          "Content-Type": "application/json"
-        },
-        "request_body": {
           "RESPONSE_CODE": "999",
-          "UTR": "UTRb3f9d1d4",
           "RESPONSE_STATUS": "FAILED",
-          "ORDER_ID": "ORD865848f661",
-          "AMOUNT": "253",
-          "RESPONSE_MESSAGE": "Webhook FAILED",
-          "MERCHANT_REF_NO": "ORD865848f661"
+          "ORDER_ID": "ORDa150bf7a",
+          "RESPONSE_MESSAGE": "Transaction Failed",
+          "vpa": "user58a0ed@ybl",
+          "TRANSACTION_ID": "ac0ee1cb-d3f6-42a6-86ce-ec2b7b614085"
         },
-        "status_code": 200,
-        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/a64244dd-9fac-4e62-ad85-55e16150500d\">Change response in Webhook.site</a>.",
-        "response_time": 1.451
-      }
-    ]
-  },
-  {
-    "test_name": "test_webhook_invalid_order",
-    "status": "PASSED",
-    "api_logs": [
-      {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
-        "method": "POST",
-        "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
-          "Content-Type": "application/json"
-        },
-        "request_body": {
-          "RESPONSE_CODE": "000",
-          "UTR": "UTRdf0cbfa8",
-          "RESPONSE_STATUS": "SETTLED",
-          "ORDER_ID": "INVALID123",
-          "AMOUNT": "100",
-          "RESPONSE_MESSAGE": "Webhook SETTLED",
-          "MERCHANT_REF_NO": "INVALID123"
-        },
-        "status_code": 404,
-        "response_body": {
-          "statusCode": 404,
-          "errors": "Not Found",
-          "data": null
-        },
-        "response_time": 1.142
-      }
-    ]
-  },
-  {
-    "test_name": "test_webhook_duplicate",
-    "status": "PASSED",
-    "api_logs": [
-      {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/payout/initiate",
-        "method": "POST",
-        "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
-          "Content-Type": "application/json"
-        },
-        "request_body": {
-          "accountType": "savings",
-          "amount": "222",
-          "mode": "IMPS",
-          "ifscCode": "HDFC0002671",
-          "accountNo": "17200368833",
-          "beneName": "Test User",
-          "beneAddress": "Testing",
-          "beneEmail": "test@gmail.com",
-          "beneMobile": "9000000000",
-          "orderId": "ORD0144b5fee8"
-        },
-        "status_code": 201,
-        "response_body": {
-          "RESPONSE_CODE": "500",
-          "UTR": "",
-          "RESPONSE_STATUS": "SETTLEMENT_PROCESS",
-          "ORDER_ID": "ORD0144b5fee8",
-          "AMOUNT": "222",
-          "RESPONSE_MESSAGE": "Settlement Processing.",
-          "AID": "",
-          "TRANSACTION_ID": "KWCc07740b5780b41",
-          "MERCHANT_REF_NO": "ORD0144b5fee8"
-        },
-        "response_time": 1.249
+        "response_time": 4.212
       },
       {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
+        "url": "https://staging.admin.kwicpe.com/api/api/v1/reconciliation/create-reconcilation",
         "method": "POST",
         "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
-          "Content-Type": "application/json"
+          "accept": "application/json",
+          "content-type": "application/json",
+          "x-skip": "true",
+          "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzc3MTcxNTYsImV4cCI6MTc3NzcyMDc1NiwiaXNzIjoia3dpY3BlIn0.TqxtR_hCWv9Rd0IP22YG0lkpCK842OtDpuHg7-nm5H4"
         },
         "request_body": {
-          "RESPONSE_CODE": "000",
-          "UTR": "UTR95807048",
-          "RESPONSE_STATUS": "SETTLED",
-          "ORDER_ID": "ORD0144b5fee8",
-          "AMOUNT": "222",
-          "RESPONSE_MESSAGE": "Webhook SETTLED",
-          "MERCHANT_REF_NO": "ORD0144b5fee8"
-        },
-        "status_code": 200,
-        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/a64244dd-9fac-4e62-ad85-55e16150500d\">Change response in Webhook.site</a>.",
-        "response_time": 1.526
-      },
-      {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
-        "method": "POST",
-        "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
-          "Content-Type": "application/json"
-        },
-        "request_body": {
-          "RESPONSE_CODE": "000",
-          "UTR": "UTRc7e29918",
-          "RESPONSE_STATUS": "SETTLED",
-          "ORDER_ID": "ORD0144b5fee8",
-          "AMOUNT": "222",
-          "RESPONSE_MESSAGE": "Webhook SETTLED",
-          "MERCHANT_REF_NO": "ORD0144b5fee8"
-        },
-        "status_code": 200,
-        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/a64244dd-9fac-4e62-ad85-55e16150500d\">Change response in Webhook.site</a>.",
-        "response_time": 4.204
-      }
-    ]
-  },
-  {
-    "test_name": "test_webhook_status_change",
-    "status": "PASSED",
-    "api_logs": [
-      {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/payout/initiate",
-        "method": "POST",
-        "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
-          "Content-Type": "application/json"
-        },
-        "request_body": {
-          "accountType": "savings",
-          "amount": "352",
-          "mode": "IMPS",
-          "ifscCode": "HDFC0002671",
-          "accountNo": "95023148346",
-          "beneName": "Test User",
-          "beneAddress": "Testing",
-          "beneEmail": "test@gmail.com",
-          "beneMobile": "9000000000",
-          "orderId": "ORDd67cc5789a"
-        },
-        "status_code": 201,
-        "response_body": {
-          "RESPONSE_CODE": "500",
-          "UTR": "",
-          "RESPONSE_STATUS": "SETTLEMENT_PROCESS",
-          "ORDER_ID": "ORDd67cc5789a",
-          "AMOUNT": "352",
-          "RESPONSE_MESSAGE": "Settlement Processing.",
-          "AID": "",
-          "TRANSACTION_ID": "KWCbac59c5258f641",
-          "MERCHANT_REF_NO": "ORDd67cc5789a"
-        },
-        "response_time": 1.24
-      },
-      {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
-        "method": "POST",
-        "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
-          "Content-Type": "application/json"
-        },
-        "request_body": {
-          "RESPONSE_CODE": "000",
-          "UTR": "UTRe1371718",
-          "RESPONSE_STATUS": "SETTLED",
-          "ORDER_ID": "ORDd67cc5789a",
-          "AMOUNT": "352",
-          "RESPONSE_MESSAGE": "Webhook SETTLED",
-          "MERCHANT_REF_NO": "ORDd67cc5789a"
-        },
-        "status_code": 200,
-        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/a64244dd-9fac-4e62-ad85-55e16150500d\">Change response in Webhook.site</a>.",
-        "response_time": 1.48
-      },
-      {
-        "url": "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data",
-        "method": "POST",
-        "headers": {
-          "api-key": "973acd641b1ed44ca9a5.1z30EyiR2NSe0pG2dYqiNqhDpTOHpZYQkG4m",
-          "Content-Type": "application/json"
-        },
-        "request_body": {
-          "RESPONSE_CODE": "999",
-          "UTR": "UTR3b1a4255",
-          "RESPONSE_STATUS": "FAILED",
-          "ORDER_ID": "ORDd67cc5789a",
-          "AMOUNT": "352",
-          "RESPONSE_MESSAGE": "Webhook FAILED",
-          "MERCHANT_REF_NO": "ORDd67cc5789a"
+          "id": "e995d909-1205-47db-a0e6-4f31841eaf72",
+          "referenceId": "905272821",
+          "request": "{\"vpa\":\"user58a0ed@ybl\",\"customerName\":\"sonitma\",\"customerEmail\":\"user8b4bc821@yopmail.com\",\"customerMobile\":\"9841693072\",\"orderId\":\"ORDa150bf7a\",\"transactionMode\":\"UPI_INTENT\",\"amount\":\"300\"}",
+          "resposne": "{\"RESPONSE_CODE\":\"000\",\"UTR\":\"\",\"RESPONSE_STATUS\":\"SUCCESS\",\"ORDER_ID\":\"ORDa150bf7a\",\"AMOUNT\":\"300\",\"RESPONSE_MESSAGE\":\"Transaction success. VPA mismatch.\",\"TRANSACTION_ID\":\"ac0ee1cb-d3f6-42a6-86ce-ec2b7b614085\",\"vpa\":\"\"}",
+          "dataItem": {
+            "vpa": "user58a0ed@ybl",
+            "customerName": "sonitma",
+            "customerEmail": "user8b4bc821@yopmail.com",
+            "customerMobile": "9841693072",
+            "orderId": "ORDa150bf7a",
+            "transactionMode": "UPI_INTENT",
+            "amount": "300"
+          },
+          "responseData": {
+            "RESPONSE_CODE": "000",
+            "UTR": "",
+            "RESPONSE_STATUS": "SUCCESS",
+            "ORDER_ID": "ORDa150bf7a",
+            "AMOUNT": "300",
+            "RESPONSE_MESSAGE": "Transaction success. VPA mismatch.",
+            "TRANSACTION_ID": "ac0ee1cb-d3f6-42a6-86ce-ec2b7b614085",
+            "vpa": ""
+          },
+          "type": "payin",
+          "orderId": "ORDa150bf7a",
+          "transactionId": "ac0ee1cb-d3f6-42a6-86ce-ec2b7b614085",
+          "pg": "test",
+          "settlementAmount": "288.00",
+          "totalComission": "9.00",
+          "netComission": "6.00",
+          "rollingReserve": "3.00",
+          "closingBalance": "0",
+          "requestAmount": "300",
+          "responseStatus": "SUCCESS",
+          "orgName": "bluecube",
+          "providerId": "13a7d37b-f2ca-4848-ba5b-6ae900451b2d",
+          "providerComm": "1.00",
+          "superComm": "2.00",
+          "totalComm": "3",
+          "customerId": "53c4d94b-ccea-494e-b23d-bb6215785fa5",
+          "alias": "TestStageAlias",
+          "approved": false
         },
         "status_code": 200,
         "response_body": {
-          "status": false,
-          "message": "Transaction already finalized. Telegram notification sent."
+          "Status": "000",
+          "Message": "Data Added"
         },
-        "response_time": 2.678
+        "response_time": 2.546
       }
     ]
   }

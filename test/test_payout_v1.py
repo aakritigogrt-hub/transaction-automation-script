@@ -73,7 +73,7 @@ def test_negative_amount():
     payload["amount"] = "-100"
 
     response = send_payout(payload)
-
+    print(response)
     assert response["statusCode"] == 400
 
 
