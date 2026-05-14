@@ -1,6 +1,6 @@
 [
   {
-    "test_name": "test_complaint_balance_deduction",
+    "test_name": "test_provider_wallet_load_and_approve",
     "status": "PASSED",
     "api_logs": [
       {
@@ -18,8 +18,8 @@
         },
         "status_code": 201,
         "response_body": {
-          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg0OTM5MDUsImV4cCI6MTc3ODQ5NzUwNSwiaXNzIjoia3dpY3BlIn0.3ZUWuTTrJpOcT53dd-_5avil0m816JoxD4VnBXGHHOU",
-          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg0OTM5MDUsImV4cCI6MTc3ODUwMTEwNSwiaXNzIjoia3dpY3BlIn0.Q6aE0e3fdnGNr6aGdwvcfHon42OIhnAmgJIPAFlJvCk",
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg2NTk1NDksImV4cCI6MTc3ODY2MzE0OSwiaXNzIjoia3dpY3BlIn0.gcxcUBkofEBLj6zQSkFSHatfCGW99u5acPd1UbXLAzk",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg2NTk1NDksImV4cCI6MTc3ODY2Njc0OSwiaXNzIjoia3dpY3BlIn0.o3y0H6dtl3pYc9lWt9z-dypuZ16QURPBd2yX1ekvmuA",
           "refreshTokenExpiry": "7200000",
           "user": {
             "id": "880bfbdf-6ed6-11f0-ad86-ae179a0ae9a3",
@@ -70,76 +70,59 @@
             }
           }
         },
-        "response_time": 1.556
+        "response_time": 0.983
       },
       {
-        "url": "https://staging.admin.kwicpe.com/api/api/v1/payments/requests",
+        "url": "https://staging.admin.kwicpe.com/api/api/v1/wallet/wallet-load",
         "method": "POST",
         "headers": {
-          "api-key": "518ee249a49898b9da10.q2FiCqdH4CHFnxLxu47yRpjIN50ZUjz8HGzU",
-          "Content-Type": "application/json"
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg2NTk1NDksImV4cCI6MTc3ODY2MzE0OSwiaXNzIjoia3dpY3BlIn0.gcxcUBkofEBLj6zQSkFSHatfCGW99u5acPd1UbXLAzk",
+          "content-type": "application/json"
         },
         "request_body": {
-          "orderId": "ORDea3ee02d",
-          "amount": "300",
-          "customerEmail": "usere4a5f07c@yopmail.com",
-          "customerMobile": "9708206572",
-          "customerName": "sonitma",
-          "transactionMode": "UPI_INTENT",
-          "vpa": "user1dfb14@ybl"
+          "providerId": "8bb39faf-bf01-4519-89a5-2742f98a2749",
+          "uploadAmount": "48"
         },
         "status_code": 201,
         "response_body": {
-          "RESPONSE_CODE": "999",
-          "RESPONSE_STATUS": "FAILED",
-          "ORDER_ID": "ORDea3ee02d",
-          "RESPONSE_MESSAGE": "Transaction Failed",
-          "vpa": "user1dfb14@ybl",
-          "TRANSACTION_ID": "6f026115-ae57-408f-9222-b898281a04ed"
+          "status": true,
+          "message": "Wallet load entry created successfully",
+          "data": {
+            "id": "361ea1ce-6d6a-42b6-9611-3a873d64e58f",
+            "providerId": "8bb39faf-bf01-4519-89a5-2742f98a2749",
+            "providerWalletId": "56a33d40-f9bf-413c-b907-4e2c9ee5c19b",
+            "orgName": "bluecube",
+            "pg": "stage-pay",
+            "uploadAmount": "48",
+            "providerBalance": "0",
+            "status": "PENDING",
+            "approvedBy": null,
+            "approvedAt": null,
+            "createdBy": "super",
+            "createdAt": "2026-05-13T08:05:51.532Z"
+          }
         },
-        "response_time": 4.152
+        "response_time": 0.855
       },
       {
-        "url": "https://staging.admin.kwicpe.com/api/api/v1/admin/complaint/create-complaint",
+        "url": "https://staging.admin.kwicpe.com/api/api/v1/wallet/approve-load-wallet",
         "method": "POST",
         "headers": {
-          "accept": "application/json",
-          "content-type": "application/json",
-          "x-skip": "true",
-          "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg0OTM5MDUsImV4cCI6MTc3ODQ5NzUwNSwiaXNzIjoia3dpY3BlIn0.3ZUWuTTrJpOcT53dd-_5avil0m816JoxD4VnBXGHHOU"
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg2NTk1NDksImV4cCI6MTc3ODY2MzE0OSwiaXNzIjoia3dpY3BlIn0.gcxcUBkofEBLj6zQSkFSHatfCGW99u5acPd1UbXLAzk",
+          "content-type": "application/json"
         },
         "request_body": {
-          "ackNo": "1",
-          "utrs": [
-            {
-              "orderId": "ORDea3ee02d",
-              "utr": "3465769",
-              "merchantName": "26ee893c-4531-4905-bf8e-9fdc2b5c07e1",
-              "customerName": "Test",
-              "complainterName": "Complaint User",
-              "complainterPhone": "9978684673",
-              "complaintDate": "11-05-2026",
-              "email": "user25d1d3@gmail.com",
-              "phone": "8383265157",
-              "vpa": "usercb249@ybl",
-              "amount": 300.0,
-              "fees": 100
-            }
-          ]
+          "id": "361ea1ce-6d6a-42b6-9611-3a873d64e58f",
+          "status": "APPROVED"
         },
-        "status_code": 200,
+        "status_code": 201,
         "response_body": {
-          "created": 1,
-          "updated": 0,
-          "details": [
-            {
-              "utr": "3465769",
-              "action": "CREATED"
-            }
-          ],
-          "notFoundUtrs": []
+          "success": true,
+          "message": "Load Balance Approve successfully!.."
         },
-        "response_time": 1.976
+        "response_time": 1.437
       }
     ]
   }
