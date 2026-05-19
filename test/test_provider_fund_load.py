@@ -14,6 +14,8 @@ GET_BALANCE_URL = (
 )
 WALLET_LOAD_URL = "https://staging.admin.kwicpe.com/api/api/v1/wallet/wallet-load"
 PPROVE_WALLET_LOAD_URL = "https://staging.admin.kwicpe.com/api/api/v1/wallet/approve-load-wallet"
+UPDATE_PROVIDER_URL = "https://staging.admin.kwicpe.com/api/api/v1/provider/8bb39faf-bf01-4519-89a5-2742f98a2749"
+
 EMAIL = "super@gmail.com"
 PASSWORD = "Admin@12345"
 
@@ -52,8 +54,7 @@ def get_token():
 # TEST CASE : PROVIDER FUND UPLOAD
 # =====================================================
 
-    return token
-
+   
 
 # =====================================================
 # FETCH PROVIDER BALANCE
@@ -103,6 +104,55 @@ def get_provider_balance(headers):
 
     return provider_balance
 
+def update_provider_status(headers, is_active):
+
+    payload = {
+        "id": PROVIDER_ID,
+        "type": "both",
+        "providerPayinComm": "2",
+        "providerPayoutComm": "2",
+        "providerName": "stage-pay",
+        "payinMinPerTxn": "200",
+        "payinMaxPerTxn": "10000",
+        "payoutMinPerTxn": "200",
+        "payoutMaxPerTxn": "20000",
+        "totalPayinLimit": "0.0",
+        "totalPayoutLimit": "0.0",
+        "currentPayinAmount": "0.0",
+        "currentPayoutAmount": "0.0",
+        "isActive": is_active,
+        "orgName": "bluecube",
+        "dailyPayinAmount": 7400,
+        "runningWalletAmount": 7400,
+        "mode": "UPI_INTENT",
+        "endTime": "2025-01-01T18:29:59.000Z",
+        "startTime": "2024-12-31T23:30:00.000Z",
+        "validLength": "1-12",
+        "ttl": 20,
+        "tps": 8000,
+        "fallbackProviderId": "",
+        "minLength": "1",
+        "maxLength": "12"
+    }
+
+    response = requests.put(
+        UPDATE_PROVIDER_URL,
+        headers=headers,
+        json=payload
+    )
+
+    print("\n========== UPDATE PROVIDER RESPONSE ==========")
+    print(response.status_code)
+
+    try:
+        print(response.json())
+    except:
+        print(response.text)
+
+    assert response.status_code in [200, 201]
+
+    return response.json()
+
 @pytest.mark.wallet
 def test_provider_wallet_load_and_approve():
 
@@ -120,6 +170,13 @@ def test_provider_wallet_load_and_approve():
     old_balance = get_provider_balance(headers)
 
     print(f"\n✅ OLD BALANCE : {old_balance}")
+
+    update_provider_status(
+        headers=headers,
+        is_active= False
+    )
+
+    print("\n✅ PROVIDER DEACTIVATED")
     # =================================================
     # STEP 2 : LOAD WALLET
     # =================================================
@@ -242,3 +299,12 @@ def test_provider_wallet_load_and_approve():
         )
 
     print("\n✅ BALANCE VERIFIED SUCCESSFULLY")
+
+    print("\n========== ACTIVATING PROVIDER ==========")
+
+    update_provider_status(
+        headers=headers,
+        is_active=True
+    )
+
+    print("\n✅ PROVIDER ACTIVATED AGAIN")

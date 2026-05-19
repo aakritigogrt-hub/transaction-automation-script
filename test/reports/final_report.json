@@ -1,6 +1,6 @@
 [
   {
-    "test_name": "test_provider_wallet_load_and_approve",
+    "test_name": "test_provider_balance_after_payout",
     "status": "PASSED",
     "api_logs": [
       {
@@ -9,7 +9,8 @@
         "headers": {
           "accept": "application/json",
           "content-type": "application/json",
-          "x-skip": "true"
+          "x-skip": "true",
+          "skipCaptcha": "true"
         },
         "request_body": {
           "email": "super@gmail.com",
@@ -18,8 +19,8 @@
         },
         "status_code": 201,
         "response_body": {
-          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg2NTk1NDksImV4cCI6MTc3ODY2MzE0OSwiaXNzIjoia3dpY3BlIn0.gcxcUBkofEBLj6zQSkFSHatfCGW99u5acPd1UbXLAzk",
-          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg2NTk1NDksImV4cCI6MTc3ODY2Njc0OSwiaXNzIjoia3dpY3BlIn0.o3y0H6dtl3pYc9lWt9z-dypuZ16QURPBd2yX1ekvmuA",
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3NzkxNzQxNzEsImV4cCI6MTc3OTE3Nzc3MSwiaXNzIjoia3dpY3BlIn0._HnHWC4NIP8FgQKuVQMFc0JNztSsOYEGrGWMkAdEKMg",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3NzkxNzQxNzEsImV4cCI6MTc3OTE4MTM3MSwiaXNzIjoia3dpY3BlIn0.UIRZ4nq2Gu8aKBnrU83MZLZ_BePSQUttZc4F8B4Gch4",
           "refreshTokenExpiry": "7200000",
           "user": {
             "id": "880bfbdf-6ed6-11f0-ad86-ae179a0ae9a3",
@@ -70,59 +71,41 @@
             }
           }
         },
-        "response_time": 0.983
+        "response_time": 2.305
       },
       {
-        "url": "https://staging.admin.kwicpe.com/api/api/v1/wallet/wallet-load",
+        "url": "https://staging.admin.kwicpe.com/api/api/v1/payout/initiate",
         "method": "POST",
         "headers": {
-          "accept": "application/json, text/plain, */*",
-          "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg2NTk1NDksImV4cCI6MTc3ODY2MzE0OSwiaXNzIjoia3dpY3BlIn0.gcxcUBkofEBLj6zQSkFSHatfCGW99u5acPd1UbXLAzk",
-          "content-type": "application/json"
+          "api-key": "6d375c65bba360113dd1.CQpn0qDwLZj3bginusmEGfZaYcxj22Vud25F",
+          "Content-Type": "application/json"
         },
         "request_body": {
-          "providerId": "8bb39faf-bf01-4519-89a5-2742f98a2749",
-          "uploadAmount": "48"
+          "accountType": "savings",
+          "amount": "500",
+          "mode": "IMPS",
+          "ifscCode": "HDFC0002671",
+          "branchname": "SBI",
+          "accountNo": "98798899989",
+          "beneName": "shaIm",
+          "beneAddress": "shaOm",
+          "beneEmail": "shOm@gmail.com",
+          "beneMobile": "9088930107",
+          "orderId": "06aefc5f-e1b2-44"
         },
         "status_code": 201,
         "response_body": {
-          "status": true,
-          "message": "Wallet load entry created successfully",
-          "data": {
-            "id": "361ea1ce-6d6a-42b6-9611-3a873d64e58f",
-            "providerId": "8bb39faf-bf01-4519-89a5-2742f98a2749",
-            "providerWalletId": "56a33d40-f9bf-413c-b907-4e2c9ee5c19b",
-            "orgName": "bluecube",
-            "pg": "stage-pay",
-            "uploadAmount": "48",
-            "providerBalance": "0",
-            "status": "PENDING",
-            "approvedBy": null,
-            "approvedAt": null,
-            "createdBy": "super",
-            "createdAt": "2026-05-13T08:05:51.532Z"
-          }
+          "RESPONSE_CODE": "500",
+          "UTR": "",
+          "RESPONSE_STATUS": "SETTLEMENT_PROCESS",
+          "ORDER_ID": "06aefc5f-e1b2-44",
+          "AMOUNT": "500",
+          "RESPONSE_MESSAGE": "Settlement Processing.",
+          "AID": "",
+          "TRANSACTION_ID": "KWC2645e807869d47",
+          "MERCHANT_REF_NO": "06aefc5f-e1b2-44"
         },
-        "response_time": 0.855
-      },
-      {
-        "url": "https://staging.admin.kwicpe.com/api/api/v1/wallet/approve-load-wallet",
-        "method": "POST",
-        "headers": {
-          "accept": "application/json, text/plain, */*",
-          "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3Nzg2NTk1NDksImV4cCI6MTc3ODY2MzE0OSwiaXNzIjoia3dpY3BlIn0.gcxcUBkofEBLj6zQSkFSHatfCGW99u5acPd1UbXLAzk",
-          "content-type": "application/json"
-        },
-        "request_body": {
-          "id": "361ea1ce-6d6a-42b6-9611-3a873d64e58f",
-          "status": "APPROVED"
-        },
-        "status_code": 201,
-        "response_body": {
-          "success": true,
-          "message": "Load Balance Approve successfully!.."
-        },
-        "response_time": 1.437
+        "response_time": 3.249
       }
     ]
   }
