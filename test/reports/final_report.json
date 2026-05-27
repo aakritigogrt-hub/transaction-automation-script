@@ -1,16 +1,61 @@
 [
   {
-    "test_name": "test_provider_balance_after_payout",
+    "test_name": "test_rolling_reserve_entry_created",
     "status": "PASSED",
     "api_logs": [
+      {
+        "url": "https://staging.admin.kwicpe.com/api/api/v1/payments/requests",
+        "method": "POST",
+        "headers": {
+          "api-key": "6d375c65bba360113dd1.CQpn0qDwLZj3bginusmEGfZaYcxj22Vud25F",
+          "Content-Type": "application/json"
+        },
+        "request_body": {
+          "orderId": "ORD638217bd",
+          "amount": "300",
+          "customerEmail": "user01304fa0@yopmail.com",
+          "customerMobile": "9453635701",
+          "customerName": "sonita",
+          "transactionMode": "UPI_INTENT",
+          "vpa": "stage@ybl"
+        },
+        "status_code": 201,
+        "response_body": {
+          "QR_STRING": "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",
+          "RESPONSE_CODE": "500",
+          "UPI_STRING": "upi://pay?pa=PS1.TEST@testbank&pn=Testing\u00b7User&am=300&tr=56bba336-af27-44b2-b949-134e2f235b50",
+          "RESPONSE_STATUS": "PROCESSING",
+          "ORDER_ID": "ORD638217bd",
+          "RESPONSE_MESSAGE": "QR Generated Successfully.",
+          "TRANSACTION_ID": "e0fee1ce-1f6c-4357-a0a8-b5535d5e9255",
+          "vpa": "stage@ybl"
+        },
+        "response_time": 5.111
+      },
+      {
+        "url": "https://staging.admin.kwicpe.com/api/api/v1/webhooks/get-webhook-payin-data",
+        "method": "POST",
+        "headers": null,
+        "request_body": {
+          "RESPONSE_CODE": "000",
+          "RESPONSE_STATUS": "SUCCESS",
+          "ORDER_ID": "ORD638217bd",
+          "AMOUNT": "300",
+          "RESPONSE_MESSAGE": "Transaction success",
+          "TRANSACTION_ID": "txn_d71e0e",
+          "vpa": "stage@ybl"
+        },
+        "status_code": 200,
+        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/72e49767-64f0-473e-8b3e-9d8f0e450cca\">Change response in Webhook.site</a>.",
+        "response_time": 5.402
+      },
       {
         "url": "https://staging.admin.kwicpe.com/api/api/v1/admin/auth/login",
         "method": "POST",
         "headers": {
           "accept": "application/json",
           "content-type": "application/json",
-          "x-skip": "true",
-          "skipCaptcha": "true"
+          "x-skip": "true"
         },
         "request_body": {
           "email": "super@gmail.com",
@@ -19,11 +64,11 @@
         },
         "status_code": 201,
         "response_body": {
-          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3NzkxNzQxNzEsImV4cCI6MTc3OTE3Nzc3MSwiaXNzIjoia3dpY3BlIn0._HnHWC4NIP8FgQKuVQMFc0JNztSsOYEGrGWMkAdEKMg",
-          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODBiZmJkZi02ZWQ2LTExZjAtYWQ4Ni1hZTE3OWEwYWU5YTMiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlciIsInByb3ZpZGVyUGF5aW5Db21pc3Npb24iOiIwIiwiYWRtaW5QYXlpbkNvbWlzc2lvbiI6IjAiLCJwcm92aWRlclBheW91dENvbWlzc2lvbiI6IjAiLCJhZG1pblBheW91dENvbWlzc2lvbiI6IjAiLCJyb2xsaW5nUmVzZXJ2ZSI6IjEiLCJuYW1lIjoic3VwZXIiLCJpYXQiOjE3NzkxNzQxNzEsImV4cCI6MTc3OTE4MTM3MSwiaXNzIjoia3dpY3BlIn0.UIRZ4nq2Gu8aKBnrU83MZLZ_BePSQUttZc4F8B4Gch4",
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJzdXBlckBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXIiLCJwcm92aWRlclBheWluQ29taXNzaW9uIjoiMCIsImFkbWluUGF5aW5Db21pc3Npb24iOiIwIiwicHJvdmlkZXJQYXlvdXRDb21pc3Npb24iOiIwIiwiYWRtaW5QYXlvdXRDb21pc3Npb24iOiIwIiwicm9sbGluZ1Jlc2VydmUiOiIxIiwibmFtZSI6InN1cGVyIiwiaWF0IjoxNzc5ODYzMDU3LCJleHAiOjE3Nzk4NjY2NTcsImlzcyI6Imt3aWNwZSJ9.RxBrnYZPaDXJwjALevBNmNbS_XhqH5qZjt3gggrQPHw",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJzdXBlckBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXIiLCJwcm92aWRlclBheWluQ29taXNzaW9uIjoiMCIsImFkbWluUGF5aW5Db21pc3Npb24iOiIwIiwicHJvdmlkZXJQYXlvdXRDb21pc3Npb24iOiIwIiwiYWRtaW5QYXlvdXRDb21pc3Npb24iOiIwIiwicm9sbGluZ1Jlc2VydmUiOiIxIiwibmFtZSI6InN1cGVyIiwiaWF0IjoxNzc5ODYzMDU3LCJleHAiOjE3Nzk4NzAyNTcsImlzcyI6Imt3aWNwZSJ9.AUP0LY4k3fQMMIKICwI36lksb64UuKG8w0SCJRJndAw",
           "refreshTokenExpiry": "7200000",
           "user": {
-            "id": "880bfbdf-6ed6-11f0-ad86-ae179a0ae9a3",
+            "id": "1",
             "name": "super",
             "email": "super@gmail.com",
             "phoneNumber": "9876543210",
@@ -45,7 +90,7 @@
             "isSlabSystem": false,
             "UserStatistics": {
               "id": "43ba54c6-d6b4-4dbb-8584-0a377f1f02c6",
-              "userId": "880bfbdf-6ed6-11f0-ad86-ae179a0ae9a3",
+              "userId": "1",
               "totalPayin": "0",
               "totalPayout": "0",
               "totalPayinComission": "0",
@@ -58,7 +103,7 @@
             },
             "PricingConfig": {
               "id": "80c346e7-cb40-436a-a965-ecdde0c120cd",
-              "userId": "880bfbdf-6ed6-11f0-ad86-ae179a0ae9a3",
+              "userId": "1",
               "providerPayinComission": "0",
               "providerPayoutComission": "0",
               "adminPayinComission": "0",
@@ -71,41 +116,7 @@
             }
           }
         },
-        "response_time": 2.305
-      },
-      {
-        "url": "https://staging.admin.kwicpe.com/api/api/v1/payout/initiate",
-        "method": "POST",
-        "headers": {
-          "api-key": "6d375c65bba360113dd1.CQpn0qDwLZj3bginusmEGfZaYcxj22Vud25F",
-          "Content-Type": "application/json"
-        },
-        "request_body": {
-          "accountType": "savings",
-          "amount": "500",
-          "mode": "IMPS",
-          "ifscCode": "HDFC0002671",
-          "branchname": "SBI",
-          "accountNo": "98798899989",
-          "beneName": "shaIm",
-          "beneAddress": "shaOm",
-          "beneEmail": "shOm@gmail.com",
-          "beneMobile": "9088930107",
-          "orderId": "06aefc5f-e1b2-44"
-        },
-        "status_code": 201,
-        "response_body": {
-          "RESPONSE_CODE": "500",
-          "UTR": "",
-          "RESPONSE_STATUS": "SETTLEMENT_PROCESS",
-          "ORDER_ID": "06aefc5f-e1b2-44",
-          "AMOUNT": "500",
-          "RESPONSE_MESSAGE": "Settlement Processing.",
-          "AID": "",
-          "TRANSACTION_ID": "KWC2645e807869d47",
-          "MERCHANT_REF_NO": "06aefc5f-e1b2-44"
-        },
-        "response_time": 3.249
+        "response_time": 1.865
       }
     ]
   }
