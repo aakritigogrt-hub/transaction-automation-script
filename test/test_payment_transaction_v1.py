@@ -6,6 +6,7 @@ import pytest
 import requests
 import time
 from ..config.headers import HEADERS
+from ..config.base_url import BASE_URL
 from ..utils.payload_factory import get_valid_payload
 
 
@@ -13,7 +14,7 @@ from ..utils.payload_factory import get_valid_payload
 # ==========================
 # BASE CONFIG
 # ==========================
-BASE_URL = "https://preprod.admin.kwicpe.com/api/v1/payments/requests"
+BASE_URLS = f"{BASE_URL}/api/v1/payments/requests"
 TIMEOUT = 10
 
 VALID_MODES = ["UPI_INTENT", "UPI_COLLECT"]
@@ -30,7 +31,7 @@ class TestPayinAPI:
     def test_success_payment(self):
         payload = get_valid_payload()
 
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         data = response.json()
 
         assert response.status_code == 201
@@ -47,7 +48,7 @@ class TestPayinAPI:
         payload = get_valid_payload()
         payload.pop("amount")
 
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         data = response.json()
 
         assert response.status_code == 400
@@ -60,21 +61,21 @@ class TestPayinAPI:
         payload = get_valid_payload()
         payload["customerEmail"] = "invalid"
 
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         assert response.json().get("RESPONSE_CODE") == "999"
 
     def test_invalid_mobile(self):
         payload = get_valid_payload()
         payload["customerMobile"] = "123"
 
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         assert response.json().get("RESPONSE_CODE") == "999"
 
     def test_invalid_vpa(self):
         payload = get_valid_payload()
         payload["vpa"] = "wrongupi"
 
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         assert response.json().get("RESPONSE_CODE") == "999"
 
     # ----------------------
@@ -85,7 +86,7 @@ class TestPayinAPI:
         payload = get_valid_payload()
         payload["amount"] = amount
 
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         assert response.json().get("RESPONSE_CODE") == ""
 
     # ----------------------
@@ -95,7 +96,7 @@ class TestPayinAPI:
         payload = get_valid_payload()
         headers = {"Content-Type": "application/json"}
 
-        response = requests.post(BASE_URL, headers=headers, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=headers, json=payload, timeout=TIMEOUT)
         assert response.status_code in [401, 201, 400]
 
     def test_invalid_api_key(self):
@@ -105,7 +106,7 @@ class TestPayinAPI:
             "Content-Type": "application/json"
         }
 
-        response = requests.post(BASE_URL, headers=headers, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=headers, json=payload, timeout=TIMEOUT)
         assert response.status_code in [401, 201, 400]
 
     # ----------------------
@@ -114,8 +115,8 @@ class TestPayinAPI:
     def test_duplicate_order(self):
         payload = get_valid_payload()
 
-        r1 = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
-        r2 = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        r1 = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        r2 = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
 
         data2 = r2.json()
 
@@ -129,7 +130,7 @@ class TestPayinAPI:
         payload = get_valid_payload()
         payload["transactionMode"] = mode
 
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         assert response.json().get("ORDER_ID") is not None
 
     # def test_invalid_transaction_mode(self):
@@ -145,7 +146,7 @@ class TestPayinAPI:
     def test_response_structure(self):
         payload = get_valid_payload()
 
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         data = response.json()
 
         assert "ORDER_ID" in data
@@ -159,7 +160,7 @@ class TestPayinAPI:
         payload = get_valid_payload()
 
         start = time.time()
-        requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         end = time.time()
 
         assert (end - start) < 5
@@ -168,7 +169,7 @@ class TestPayinAPI:
         payload = get_valid_payload()
         payload["amount"] = "10"
 
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         data = response.json()
 
         assert response.status_code in [200, 201, 400]
@@ -184,7 +185,7 @@ class TestPayinAPI:
         payload = get_valid_payload()
         payload["amount"] = "0"
 
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         data = response.json()
 
         message = data.get("RESPONSE_MESSAGE", "").lower()
@@ -230,6 +231,27 @@ class TestPayinAPI:
     def test_invalid_amount(self):
         payload = get_valid_payload()
         payload["amount"] = "abc"
-        response = requests.post(BASE_URL, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         data = response.json()
         assert response.status_code in [400]
+
+
+
+   
+    def test_ip_not_whitelisted(self):
+        payload = get_valid_payload()
+
+        response = requests.post(
+            BASE_URLS,
+            headers=HEADERS,
+            json=payload,
+            timeout=TIMEOUT
+        )
+
+        data = response.json()
+
+        assert response.status_code == 403
+        assert data.get("statusCode") == 403
+        assert data.get("errors") == "Forbidden"
+        assert "not whitelisted" in data.get("message", "").lower()
+        assert data.get("data") is None

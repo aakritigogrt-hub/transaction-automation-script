@@ -6,11 +6,7 @@ import json
 
 from ..config.headers import  API_HEADERS_V2
 from ..utils.payload_factory import get_v2_encrypt_payload
-# =========================
-# URLS
-# =========================
-
-BASE_URL = "https://staging.admin.kwicpe.com/api/api/v2"
+from ..config.base_url import BASE_URL
 
 ENCRYPT_URL = f"{BASE_URL}/payin/encrypt"
 INITIATE_URL = f"{BASE_URL}/withdrawal/initiate"

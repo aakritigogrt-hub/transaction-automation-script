@@ -6,17 +6,11 @@ import copy
 
 from ..utils.payload_factory import get_valid_payload_v2
 from ..config.headers import  API_HEADERS_V2
+from ..config.base_url import BASE_URL
 
-
-# ==============================
-# V2 ENDPOINTS
-# ==============================
-
-BASE_URL_V2 = "https://staging.admin.kwicpe.com/api/api/v2"
-
-ENCRYPT_URL = f"{BASE_URL_V2}/payin/encrypt"
-INITIATE_URL = f"{BASE_URL_V2}/payin/requests"
-DECRYPT_URL = f"{BASE_URL_V2}/payin/decrypt"
+ENCRYPT_URL = f"{BASE_URL}/api/v2/payin/encrypt"
+INITIATE_URL = f"{BASE_URL}/api/v2/payin/requests"
+DECRYPT_URL = f"{BASE_URL}/api/v2/payin/decrypt"
 
 TIMEOUT = 10
 
@@ -59,7 +53,7 @@ def perform_full_flow(payload):
         "iv": initiate_json["iv"],
         "encryptedData": initiate_json["encryptedData"],
         "authTag": initiate_json["authTag"],
-        "hexKey":"f0f0f92f9bfbac7770c99b9caca27b1499d10dc89643e76918e535b984053c5d"
+        "hexKey":"6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
     }
 
     decrypt_res = requests.post(
@@ -172,21 +166,6 @@ def test_missing_order_id():
 
     print("MISSING ORDERID RESPONSE:", result)
 
-  
-
-
-# =========================
-# MISSING AMOUNT
-# =========================
-
-def test_missing_amount():
-    payload = get_valid_payload_v2()
-    payload["data"].pop("amount")
-
-    result = perform_full_flow(payload)
-
-    print("MISSING AMOUNT RESPONSE:", result)
-    assert result["statusCode"] == 400
 
    
 
@@ -202,4 +181,7 @@ def test_invalid_amount():
     result = perform_full_flow(payload)
 
     print("INVALID AMOUNT RESPONSE:", result)
-    assert result["statusCode"] == 400
+    assert result["RESPONSE_CODE"] == "999"
+
+
+

@@ -1,123 +1,489 @@
 [
   {
-    "test_name": "test_rolling_reserve_entry_created",
+    "test_name": "test_full_payin_flow",
     "status": "PASSED",
     "api_logs": [
       {
-        "url": "https://staging.admin.kwicpe.com/api/api/v1/payments/requests",
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/encrypt",
         "method": "POST",
         "headers": {
-          "api-key": "6d375c65bba360113dd1.CQpn0qDwLZj3bginusmEGfZaYcxj22Vud25F",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
         },
         "request_body": {
-          "orderId": "ORD638217bd",
-          "amount": "300",
-          "customerEmail": "user01304fa0@yopmail.com",
-          "customerMobile": "9453635701",
-          "customerName": "sonita",
-          "transactionMode": "UPI_INTENT",
-          "vpa": "stage@ybl"
-        },
-        "status_code": 201,
-        "response_body": {
-          "QR_STRING": "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",
-          "RESPONSE_CODE": "500",
-          "UPI_STRING": "upi://pay?pa=PS1.TEST@testbank&pn=Testing\u00b7User&am=300&tr=56bba336-af27-44b2-b949-134e2f235b50",
-          "RESPONSE_STATUS": "PROCESSING",
-          "ORDER_ID": "ORD638217bd",
-          "RESPONSE_MESSAGE": "QR Generated Successfully.",
-          "TRANSACTION_ID": "e0fee1ce-1f6c-4357-a0a8-b5535d5e9255",
-          "vpa": "stage@ybl"
-        },
-        "response_time": 5.111
-      },
-      {
-        "url": "https://staging.admin.kwicpe.com/api/api/v1/webhooks/get-webhook-payin-data",
-        "method": "POST",
-        "headers": null,
-        "request_body": {
-          "RESPONSE_CODE": "000",
-          "RESPONSE_STATUS": "SUCCESS",
-          "ORDER_ID": "ORD638217bd",
-          "AMOUNT": "300",
-          "RESPONSE_MESSAGE": "Transaction success",
-          "TRANSACTION_ID": "txn_d71e0e",
-          "vpa": "stage@ybl"
+          "data": {
+            "orderId": "ORD_9d601891b6",
+            "amount": "1000",
+            "customerEmail": "shamihh@example.com",
+            "customerMobile": "8281233876",
+            "customerName": "shamvu",
+            "transactionMode": "UPI_INTENT",
+            "vpa": "success@ybl"
+          },
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
         },
         "status_code": 200,
-        "response_body": "This URL has no default content configured. <a href=\"https://webhook.site/#!/edit/72e49767-64f0-473e-8b3e-9d8f0e450cca\">Change response in Webhook.site</a>.",
-        "response_time": 5.402
+        "response_body": {
+          "message": "Data encrypted successfully",
+          "iv": "03851e12d5113ab968c6803f",
+          "encryptedData": "8a2d8491b0b4b28aaf54b475e5979f1e5c0e7e8bfc5b73e22edcbbb9d0f32a6cd1f4a8c407bfd6be672928d67fed162704493e4170d93001cac9cb52740d68b61be171ebcdd42ba35cc0b701be77599471aacd5edff36a18fa3ab2cf6a2b59c701d4e361d34064b33a0ca7dff377b0ed286fc653d111b13831acb32a4522a224d44c4ad238e3046ca8d2161fdedf4a9e0aa47ef19feda89fab1d141abfc07071bc6911e6bce5f8e8bad1b26a8906025cabfbfa376ecc64424482d7",
+          "authTag": "39ae8b2736578eb586328c8cc59a71b4"
+        },
+        "response_time": 1.09
       },
       {
-        "url": "https://staging.admin.kwicpe.com/api/api/v1/admin/auth/login",
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/requests",
         "method": "POST",
         "headers": {
-          "accept": "application/json",
-          "content-type": "application/json",
-          "x-skip": "true"
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
         },
         "request_body": {
-          "email": "super@gmail.com",
-          "password": "Admin@12345",
-          "recaptchaToken": "dummy_token"
+          "iv": "03851e12d5113ab968c6803f",
+          "encryptedData": "8a2d8491b0b4b28aaf54b475e5979f1e5c0e7e8bfc5b73e22edcbbb9d0f32a6cd1f4a8c407bfd6be672928d67fed162704493e4170d93001cac9cb52740d68b61be171ebcdd42ba35cc0b701be77599471aacd5edff36a18fa3ab2cf6a2b59c701d4e361d34064b33a0ca7dff377b0ed286fc653d111b13831acb32a4522a224d44c4ad238e3046ca8d2161fdedf4a9e0aa47ef19feda89fab1d141abfc07071bc6911e6bce5f8e8bad1b26a8906025cabfbfa376ecc64424482d7",
+          "authTag": "39ae8b2736578eb586328c8cc59a71b4"
         },
-        "status_code": 201,
+        "status_code": 200,
         "response_body": {
-          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJzdXBlckBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXIiLCJwcm92aWRlclBheWluQ29taXNzaW9uIjoiMCIsImFkbWluUGF5aW5Db21pc3Npb24iOiIwIiwicHJvdmlkZXJQYXlvdXRDb21pc3Npb24iOiIwIiwiYWRtaW5QYXlvdXRDb21pc3Npb24iOiIwIiwicm9sbGluZ1Jlc2VydmUiOiIxIiwibmFtZSI6InN1cGVyIiwiaWF0IjoxNzc5ODYzMDU3LCJleHAiOjE3Nzk4NjY2NTcsImlzcyI6Imt3aWNwZSJ9.RxBrnYZPaDXJwjALevBNmNbS_XhqH5qZjt3gggrQPHw",
-          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJzdXBlckBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXIiLCJwcm92aWRlclBheWluQ29taXNzaW9uIjoiMCIsImFkbWluUGF5aW5Db21pc3Npb24iOiIwIiwicHJvdmlkZXJQYXlvdXRDb21pc3Npb24iOiIwIiwiYWRtaW5QYXlvdXRDb21pc3Npb24iOiIwIiwicm9sbGluZ1Jlc2VydmUiOiIxIiwibmFtZSI6InN1cGVyIiwiaWF0IjoxNzc5ODYzMDU3LCJleHAiOjE3Nzk4NzAyNTcsImlzcyI6Imt3aWNwZSJ9.AUP0LY4k3fQMMIKICwI36lksb64UuKG8w0SCJRJndAw",
-          "refreshTokenExpiry": "7200000",
-          "user": {
-            "id": "1",
-            "name": "super",
-            "email": "super@gmail.com",
-            "phoneNumber": "9876543210",
-            "role": "super",
-            "status": 1,
-            "createdAt": "2025-08-01T12:53:33.000Z",
-            "updatedAt": "2026-05-11T07:14:27.996Z",
-            "validateVpa": false,
-            "passwordUpdatedAt": null,
-            "updatedOtp": "924940",
-            "autoSwitch": false,
-            "otherCharges": 0,
-            "api_version": 1,
-            "alias": "super",
-            "penaltyAmount": "2000",
-            "payoutFormAccess": false,
-            "autoSwitchPayout": false,
-            "ipRequired": false,
-            "isSlabSystem": false,
-            "UserStatistics": {
-              "id": "43ba54c6-d6b4-4dbb-8584-0a377f1f02c6",
-              "userId": "1",
-              "totalPayin": "0",
-              "totalPayout": "0",
-              "totalPayinComission": "0",
-              "totalPayoutComission": "0",
-              "rollingReserve": "1",
-              "rollingReserveBalance": "0",
-              "rollingReserveDays": 90,
-              "lastUpdatedAt": "2025-09-15T05:28:33.536Z",
-              "recoveredAmount": 0
-            },
-            "PricingConfig": {
-              "id": "80c346e7-cb40-436a-a965-ecdde0c120cd",
-              "userId": "1",
-              "providerPayinComission": "0",
-              "providerPayoutComission": "0",
-              "adminPayinComission": "0",
-              "adminPayoutComission": "0",
-              "maxPayinAmount": "0",
-              "maxPayoutAmount": "0",
-              "minPayinAmount": "0",
-              "minPayoutAmount": "0",
-              "updatedAt": "2025-09-15T05:28:33.536Z"
-            }
-          }
+          "status": true,
+          "message": "Encrypted response",
+          "encryptedData": "c8132bd159e469578cc1203ceed1d0d054c9ec7750611d30585d6f5611ddfa66e398c624ef11ea5c835315eb230c781016df3d8c0f4dfc400dda7d85e29684216519734808b250587cb6418e9992005a25bab61ffcd62079870b554b40c6c4d78d8f3c5ac2c6fcacb628873c0defe2adc5b296a5e01fd1d9f1e51ca4741da8cf0ee60258a2e503609ad34aa060eb44fbd48a54359b2ed393e852785821f8b97de32e37ef6e281680bcbbab46b4934bec68c0661c8ed79a335b1b2907e13445338aa84ac3e7ec728b45d287dfd04fe60aba18b47605cd3d747f35dd42fb69cdde6db1d45e592448b3fa3abd47ec81ae5ca31beb4bf0cbce8d66ea86faa7e62a3ddab502e7be28a6247e811334eaf5ab40623960dff0e0cbb5e97fee718aa55ee0d5e7360641ced86626d90480b4a22438143bcfa3e4f8aa9841196fa5ab038d013ebbf27f025c6b952b00088c35bddf72dd333fd2562078679dd24532b79ee1fcbb02abe859ce0d0db873a6c7b1864482dd73fdaf49c456cbbcf1399f517bb3933ce3a281cc5042352883e24cf9f3fac215bc262fb39c186fd238655ff6969bf935b33a77ff4560c5a9075f1b055e7f717601085baae718ac9695ca2a5e6a2a13d2b833ef6591c109ed95d30a2769673c634bed2fcd567979c2b20f954c785fe2060604662ed6d4ed56de913641dd9070a7592dcddeb90edb178fc95d2c790a8aba9f253249e47495cdcc4158e90159b52f04d4794784461b7eb3024a1e8cc85eaf1c1153e6d30acdca1fb47edd4022fe9e3bd9b6bc677c90116b03e408cb1309e9f78052c4f30dc221bd7bd795e4a80fdaf2ad4cb9a29c394cf6b360d35899be1bd45084b9a7c14e8ed92b402613ef861216ad960c8ada189e37e234ab67add3279fb560bd946ae38ae061607a0c4f94fa85cadf61af3a107ff0909faa4266cbb558495cc6ff7982ca8ac0457a0f420e426fa1a821a73bb43b28f1fbe59abded755af3cea8a92c7f7d2082c6c2c5eb34bc17fd88920e9ab2bd1f275347ef5411ebfbd42c3e9f897043d93f37e02e14c29f8e69c77fd2c898b1225109312d84a13e00107b4c088acc15238a4aa980357f11324f3780e493644b79f693b145f3e4f29bffd4484c086ade320498ed532233afa6ce8ed3041de2ffec0737420f3865ad4c9977db22e72ca528713214e7f666293d4d3bd93db3766b8387189d051f8395bbaae45627cec58a397d74adef3422524e7e9e7caccc71e46f1fa5aaba35ee2287fc1b6b37e685bba85d982ca63a775d8b69dc21db3254d479a23673170c4d08272aa3234d1f55d94df497441dcd892b81805dce8a4743e73e5e17303a8c4711158b3a42fede0131e76206473b14b1fa7b460d66e1753899820b756029559f5748e19ab525aa26327337d81967897f94aabd0f3f83518c655a4f54a1430d3d71c4be64f25f7a2dd6b930ab94758be33a0ed1f12cffc690fa58a356056955b8bbf6334311e7cbacf92f1f565d37459dbce614a9fcbd55559a2b524cbf2723b43e77be714c5103d33ba98a5e278ae1e2664575be5f0a24dba66a0e8f9a9bc594457f583c6673874c3e5e03af8467e400cc8100894420157d5c92b2dc603dab6a37c414b38b348ad9f2aa6f2c6892bca972e789b16ff134eeb0d812a1dca1762efed7648105b72e0024087a78477bb3e47172b3c6d35910beda8048751fc545b63fb93d8033a021eee8e035f8c9692a2320d600edffa730fedb671da16cc18a9d35dfdd44324fea83d90d1f1b1b0102799a148f7bc131d8a3d34eca81254e62f60baa0a5189e99e74b9e6335494782256562d4fe2f94de81a7fa66eeb909ce6a961c93cbffb2d1d2d60a12e158bd617e3c34249cbdf0d9e0706c177befb633d0130828fb8b5902dfe21a791afeb62350037453feb953beda505b12686749155fa0dba5744b39414c21850fee7d11900e38cbf700d68bc41b69799749a91487fcc94ca4babec1337bc74fc7f9d46cedb3c05de068fce99d35b852b12effd6b8e022abc0f79c04f7b5bd313fb0bbc9233384b228961c679b8039e51a6fbf479af1f56365d9822d77efa96ac0ba3c9cefd432bf92f7d4a059471908a4b876c4f86ecc838b5439cc214e0e2c178e123b3f4ba8574aa42001c6573af16fca5586b9339afa1143f6a4782e3969fe66cc8645e14a3b2805f653f49fc141ae6002317aa9dc7c5c97ada1f173728eb12b6f999e316e749f2963ff6036549788eb6f8d8e63ab113f11c5df57506292ed35be11e6cc480dfe090d7312c0ed4ac64b1d471b8413ab585b55c251363c841ad8c830b26b63638fa8b301a0abc09d80dacd6bf65b7d5dc3d8f52ba0ec8de7b3de7038acc89079fbd75e33dec796dcf88471a311d60c6eabde670926b8f26bdbbb90188e2d2e7c573c878ee03286044c1a982f5c50e73a1777eb0185c185d004302f976dc7ff35d5a61e12b4e89eecdbbde9b02fbced1e9ff68898fe3073928575288921b097cf509f620100ffbb879953d0c2c36dbac432286ec2b0870256373202c28be47593e5272d9673c35c34c06fba8f0d9b9999eaf9e0c044c97a65a6feba858d75f916ce5ea607ee496e148e4d4070a210033808270d61cde97d4effacb52d4959802b3a2be3a92980b56037c3dd3c38f487e8839dbd60b5fdeef859f09e1ec1b1a6546c09544490930d2de48413e2423e062da30692b322105dc2997b9a746088266ec3aff423b612c4d99eb05a341aeae8c95cd3e116dd8eb79d227127dc8fd3311de6f42e39c38dd3caeb0d94df3cf2587b573c3dfc4de08231975760c43be2600785c823e4f52431b9d158043c1a1e890c2453da1a28c35e44cc4f4cd217e1500c9d8af8bd4149ca894786c823f682f3cc8b10c23278d4ce781d105c7c030a2e2fc2f0033df63ceb78cafcd7bed3bb184aef2289ec0fa7c7a7216f6d7883d6d6d9a2e784883addce356234869d2bbbaa7b2e699d39ae77e441b4a4692e195f1eb10e616fdc96bec4ce952b26d4fd16827da7292bb6757dce7ab65e45bb94ed569672bf0067542d70da358e0be085ca72dc9276214a2769b4bf0c43bc9960c9e8fd2c3def6418ebe580e13215deea96cb2859e6543d3ff1d9ca02c179a6dd0db6f0b0413c6ccdc72b8dda3fe1e07055e7030c95020bfb9bd736dda70e8c7d7057873aab571c35dadc5b512085e66815e5fbdf0ce69c248e41fb0260ac73cf4d26dae21328b0293f5b27c7d393d096a41a7e9c3250c472d875a3bda258e530ba91d3394548511e4577d0b6551a813a9530d8687d3ff08265ea0b8c2ad9cc50c2d47a704ad2ac8919733577b4ed006b470705b945d24a3ab2dd4a17f3ab86c1d53cb1f10babbeb79fb7514546c71945ed7a5213f892cdfc808180d6d8f2369e14857a05d387b800f89387c822d4d85b9a0f3ed66cb021fbbc026b5e6f7c0b84f93f4502b2d53bf7b0d2df84459af4c578e598f816896ea76a5e1baf88b50c8ac4eda55505c10a9a5491c4407fb6640eaa710852c4cbed27a8c155aa6bab7e245d8cb49f647a5ca3cb48e7cecf3f1ea157edc36e031fc799d4353bc9a2edba6488c55734671a98d22eb4f974eff7a12dff1c8c8f77e0ddd5902c48af92632aa034d37e1e5afdac00370c76c8a455fe95234b22ae3d69411043ed2bbbe39596b1171a816eb79313b625e28aad2d8a39513dc6029fa5d330a9892cf3ce157d2c1462a9b927209c2989561598e8526a094eac75785a49c61bc23f4cf6471bec8c94acea22631309652cd6ce613929c48b5cf1b5b095cac9c470f0f3bfdcd8f080966ee624c25b808e67229d01e8592110175b1580369eba17b67c5f1bdfbdab259bf6e0c122ed32365d2fe323bad94614baf9107ffdd82f8a6250646f72d4c4847134f5fb4d0595e830eec2be2ec9eab778779ec23b70c46e49c415a9444ce715389b2bc411c793bd6cd30e1ae377d9e12427ff87c2399f4fd3495ae927820b84b065c3e076d90b3b3b8def7cf98ea35afd4189e283d2a2357f9769f4b0abe33c117af02caab2806a833234da1e3ce6516e900dea492fa9b9f202afa054ae7c1f53c21a0b34d3046bcfcefdb70122aa3c7acdb3a94abcd0a3890881e0b6af018ccf0f262cfc9ea9b528f866aa9f3c1980e74e67d6658e1cfc83e680c702f73b47b1a9f78a8b77bc40d328d8dff6d5da7a27d71e9e82597689bf57917ab7eddfaa46f21031e5dfce264f89ee93fce0f6382c464ca760a3bdfa80a341a4f3ef347a319bf7b1912a433184878b9c2f35750775baa0f5503995cddcfa947115fc36f95f4467b55cff149dafe5e64f089fbfc56bd9f855f1d88926c358752fdeb76eb17db257582e97711600bcef3eab25e1c2479ae81a5ef9e70a530dc6b383b51edb49ea4f57fce51742d5c10b7305fc74f6932ab9c28263029ce7d58eaf19d197094d239d67846272dfe9ed942055ceeadf2d837dc0e4df17e764278ef4f66c0bef7a8ead43b133c8d7cfc4e794fb1ce685e84500522a4ef166f7c5fa4bb07adb506b595be8aafef357a42ddf056e1e70923100eb1ee1da5c9050af17e4601cd75009cc9c2f1c50daa9d4a119ae014e5da1a19f98c6440fc5fbd9f460a7f22cedf8572d1839cd85c4bc248327f88757628ff616d979c8dc6670d0b4eda0a8abe6c6bfff8f6903550bcace2bb7baf39e4bde6a465ec20e1700bcf4654786f5324d2b016398c85cdab7fb36badf5b4e7f1f0c0a1dbe90b9ef744bb3f91db0c1cc70e4f22d52980e26612b5f24546abc1c52bd596ddba4bbf48eacbe78a888b010459666b24c92bc54318b520f06cf1632a55be5a7a",
+          "iv": "1ce437132b10e6a9f8487071",
+          "authTag": "81d82f7ef288bc29bf05566bf2db91cf"
         },
-        "response_time": 1.865
+        "response_time": 1.758
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/decrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "1ce437132b10e6a9f8487071",
+          "encryptedData": "c8132bd159e469578cc1203ceed1d0d054c9ec7750611d30585d6f5611ddfa66e398c624ef11ea5c835315eb230c781016df3d8c0f4dfc400dda7d85e29684216519734808b250587cb6418e9992005a25bab61ffcd62079870b554b40c6c4d78d8f3c5ac2c6fcacb628873c0defe2adc5b296a5e01fd1d9f1e51ca4741da8cf0ee60258a2e503609ad34aa060eb44fbd48a54359b2ed393e852785821f8b97de32e37ef6e281680bcbbab46b4934bec68c0661c8ed79a335b1b2907e13445338aa84ac3e7ec728b45d287dfd04fe60aba18b47605cd3d747f35dd42fb69cdde6db1d45e592448b3fa3abd47ec81ae5ca31beb4bf0cbce8d66ea86faa7e62a3ddab502e7be28a6247e811334eaf5ab40623960dff0e0cbb5e97fee718aa55ee0d5e7360641ced86626d90480b4a22438143bcfa3e4f8aa9841196fa5ab038d013ebbf27f025c6b952b00088c35bddf72dd333fd2562078679dd24532b79ee1fcbb02abe859ce0d0db873a6c7b1864482dd73fdaf49c456cbbcf1399f517bb3933ce3a281cc5042352883e24cf9f3fac215bc262fb39c186fd238655ff6969bf935b33a77ff4560c5a9075f1b055e7f717601085baae718ac9695ca2a5e6a2a13d2b833ef6591c109ed95d30a2769673c634bed2fcd567979c2b20f954c785fe2060604662ed6d4ed56de913641dd9070a7592dcddeb90edb178fc95d2c790a8aba9f253249e47495cdcc4158e90159b52f04d4794784461b7eb3024a1e8cc85eaf1c1153e6d30acdca1fb47edd4022fe9e3bd9b6bc677c90116b03e408cb1309e9f78052c4f30dc221bd7bd795e4a80fdaf2ad4cb9a29c394cf6b360d35899be1bd45084b9a7c14e8ed92b402613ef861216ad960c8ada189e37e234ab67add3279fb560bd946ae38ae061607a0c4f94fa85cadf61af3a107ff0909faa4266cbb558495cc6ff7982ca8ac0457a0f420e426fa1a821a73bb43b28f1fbe59abded755af3cea8a92c7f7d2082c6c2c5eb34bc17fd88920e9ab2bd1f275347ef5411ebfbd42c3e9f897043d93f37e02e14c29f8e69c77fd2c898b1225109312d84a13e00107b4c088acc15238a4aa980357f11324f3780e493644b79f693b145f3e4f29bffd4484c086ade320498ed532233afa6ce8ed3041de2ffec0737420f3865ad4c9977db22e72ca528713214e7f666293d4d3bd93db3766b8387189d051f8395bbaae45627cec58a397d74adef3422524e7e9e7caccc71e46f1fa5aaba35ee2287fc1b6b37e685bba85d982ca63a775d8b69dc21db3254d479a23673170c4d08272aa3234d1f55d94df497441dcd892b81805dce8a4743e73e5e17303a8c4711158b3a42fede0131e76206473b14b1fa7b460d66e1753899820b756029559f5748e19ab525aa26327337d81967897f94aabd0f3f83518c655a4f54a1430d3d71c4be64f25f7a2dd6b930ab94758be33a0ed1f12cffc690fa58a356056955b8bbf6334311e7cbacf92f1f565d37459dbce614a9fcbd55559a2b524cbf2723b43e77be714c5103d33ba98a5e278ae1e2664575be5f0a24dba66a0e8f9a9bc594457f583c6673874c3e5e03af8467e400cc8100894420157d5c92b2dc603dab6a37c414b38b348ad9f2aa6f2c6892bca972e789b16ff134eeb0d812a1dca1762efed7648105b72e0024087a78477bb3e47172b3c6d35910beda8048751fc545b63fb93d8033a021eee8e035f8c9692a2320d600edffa730fedb671da16cc18a9d35dfdd44324fea83d90d1f1b1b0102799a148f7bc131d8a3d34eca81254e62f60baa0a5189e99e74b9e6335494782256562d4fe2f94de81a7fa66eeb909ce6a961c93cbffb2d1d2d60a12e158bd617e3c34249cbdf0d9e0706c177befb633d0130828fb8b5902dfe21a791afeb62350037453feb953beda505b12686749155fa0dba5744b39414c21850fee7d11900e38cbf700d68bc41b69799749a91487fcc94ca4babec1337bc74fc7f9d46cedb3c05de068fce99d35b852b12effd6b8e022abc0f79c04f7b5bd313fb0bbc9233384b228961c679b8039e51a6fbf479af1f56365d9822d77efa96ac0ba3c9cefd432bf92f7d4a059471908a4b876c4f86ecc838b5439cc214e0e2c178e123b3f4ba8574aa42001c6573af16fca5586b9339afa1143f6a4782e3969fe66cc8645e14a3b2805f653f49fc141ae6002317aa9dc7c5c97ada1f173728eb12b6f999e316e749f2963ff6036549788eb6f8d8e63ab113f11c5df57506292ed35be11e6cc480dfe090d7312c0ed4ac64b1d471b8413ab585b55c251363c841ad8c830b26b63638fa8b301a0abc09d80dacd6bf65b7d5dc3d8f52ba0ec8de7b3de7038acc89079fbd75e33dec796dcf88471a311d60c6eabde670926b8f26bdbbb90188e2d2e7c573c878ee03286044c1a982f5c50e73a1777eb0185c185d004302f976dc7ff35d5a61e12b4e89eecdbbde9b02fbced1e9ff68898fe3073928575288921b097cf509f620100ffbb879953d0c2c36dbac432286ec2b0870256373202c28be47593e5272d9673c35c34c06fba8f0d9b9999eaf9e0c044c97a65a6feba858d75f916ce5ea607ee496e148e4d4070a210033808270d61cde97d4effacb52d4959802b3a2be3a92980b56037c3dd3c38f487e8839dbd60b5fdeef859f09e1ec1b1a6546c09544490930d2de48413e2423e062da30692b322105dc2997b9a746088266ec3aff423b612c4d99eb05a341aeae8c95cd3e116dd8eb79d227127dc8fd3311de6f42e39c38dd3caeb0d94df3cf2587b573c3dfc4de08231975760c43be2600785c823e4f52431b9d158043c1a1e890c2453da1a28c35e44cc4f4cd217e1500c9d8af8bd4149ca894786c823f682f3cc8b10c23278d4ce781d105c7c030a2e2fc2f0033df63ceb78cafcd7bed3bb184aef2289ec0fa7c7a7216f6d7883d6d6d9a2e784883addce356234869d2bbbaa7b2e699d39ae77e441b4a4692e195f1eb10e616fdc96bec4ce952b26d4fd16827da7292bb6757dce7ab65e45bb94ed569672bf0067542d70da358e0be085ca72dc9276214a2769b4bf0c43bc9960c9e8fd2c3def6418ebe580e13215deea96cb2859e6543d3ff1d9ca02c179a6dd0db6f0b0413c6ccdc72b8dda3fe1e07055e7030c95020bfb9bd736dda70e8c7d7057873aab571c35dadc5b512085e66815e5fbdf0ce69c248e41fb0260ac73cf4d26dae21328b0293f5b27c7d393d096a41a7e9c3250c472d875a3bda258e530ba91d3394548511e4577d0b6551a813a9530d8687d3ff08265ea0b8c2ad9cc50c2d47a704ad2ac8919733577b4ed006b470705b945d24a3ab2dd4a17f3ab86c1d53cb1f10babbeb79fb7514546c71945ed7a5213f892cdfc808180d6d8f2369e14857a05d387b800f89387c822d4d85b9a0f3ed66cb021fbbc026b5e6f7c0b84f93f4502b2d53bf7b0d2df84459af4c578e598f816896ea76a5e1baf88b50c8ac4eda55505c10a9a5491c4407fb6640eaa710852c4cbed27a8c155aa6bab7e245d8cb49f647a5ca3cb48e7cecf3f1ea157edc36e031fc799d4353bc9a2edba6488c55734671a98d22eb4f974eff7a12dff1c8c8f77e0ddd5902c48af92632aa034d37e1e5afdac00370c76c8a455fe95234b22ae3d69411043ed2bbbe39596b1171a816eb79313b625e28aad2d8a39513dc6029fa5d330a9892cf3ce157d2c1462a9b927209c2989561598e8526a094eac75785a49c61bc23f4cf6471bec8c94acea22631309652cd6ce613929c48b5cf1b5b095cac9c470f0f3bfdcd8f080966ee624c25b808e67229d01e8592110175b1580369eba17b67c5f1bdfbdab259bf6e0c122ed32365d2fe323bad94614baf9107ffdd82f8a6250646f72d4c4847134f5fb4d0595e830eec2be2ec9eab778779ec23b70c46e49c415a9444ce715389b2bc411c793bd6cd30e1ae377d9e12427ff87c2399f4fd3495ae927820b84b065c3e076d90b3b3b8def7cf98ea35afd4189e283d2a2357f9769f4b0abe33c117af02caab2806a833234da1e3ce6516e900dea492fa9b9f202afa054ae7c1f53c21a0b34d3046bcfcefdb70122aa3c7acdb3a94abcd0a3890881e0b6af018ccf0f262cfc9ea9b528f866aa9f3c1980e74e67d6658e1cfc83e680c702f73b47b1a9f78a8b77bc40d328d8dff6d5da7a27d71e9e82597689bf57917ab7eddfaa46f21031e5dfce264f89ee93fce0f6382c464ca760a3bdfa80a341a4f3ef347a319bf7b1912a433184878b9c2f35750775baa0f5503995cddcfa947115fc36f95f4467b55cff149dafe5e64f089fbfc56bd9f855f1d88926c358752fdeb76eb17db257582e97711600bcef3eab25e1c2479ae81a5ef9e70a530dc6b383b51edb49ea4f57fce51742d5c10b7305fc74f6932ab9c28263029ce7d58eaf19d197094d239d67846272dfe9ed942055ceeadf2d837dc0e4df17e764278ef4f66c0bef7a8ead43b133c8d7cfc4e794fb1ce685e84500522a4ef166f7c5fa4bb07adb506b595be8aafef357a42ddf056e1e70923100eb1ee1da5c9050af17e4601cd75009cc9c2f1c50daa9d4a119ae014e5da1a19f98c6440fc5fbd9f460a7f22cedf8572d1839cd85c4bc248327f88757628ff616d979c8dc6670d0b4eda0a8abe6c6bfff8f6903550bcace2bb7baf39e4bde6a465ec20e1700bcf4654786f5324d2b016398c85cdab7fb36badf5b4e7f1f0c0a1dbe90b9ef744bb3f91db0c1cc70e4f22d52980e26612b5f24546abc1c52bd596ddba4bbf48eacbe78a888b010459666b24c92bc54318b520f06cf1632a55be5a7a",
+          "authTag": "81d82f7ef288bc29bf05566bf2db91cf",
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Decryption successful",
+          "decrypted": "{\"QR_STRING\":\"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\",\"RESPONSE_CODE\":\"500\",\"UPI_STRING\":\"upi://pay?pa=PS1.TEST@testbank&pn=Testing\u00b7User&am=1000&tr=05c8f1db-6782-42b2-95d3-81a039ac5707\",\"RESPONSE_STATUS\":\"PROCESSING\",\"ORDER_ID\":\"ORD_9d601891b6\",\"RESPONSE_MESSAGE\":\"QR Generated Successfully.\",\"TRANSACTION_ID\":\"ce611a2e-1629-4806-9fcd-aea446d8d7a2\",\"vpa\":\"success@ybl\"}"
+        },
+        "response_time": 0.846
       }
     ]
+  },
+  {
+    "test_name": "test_duplicate_order_id",
+    "status": "PASSED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/encrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "data": {
+            "orderId": "DUPLICATE_12345",
+            "amount": "1000",
+            "customerEmail": "shamihh@example.com",
+            "customerMobile": "8281233876",
+            "customerName": "shamvu",
+            "transactionMode": "UPI_INTENT",
+            "vpa": "success@ybl"
+          },
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Data encrypted successfully",
+          "iv": "b64a5563dbffaeea9ed48765",
+          "encryptedData": "1dbb85d8deac1e13ae341a6b4c214621cbf72f28a182dc380f01e106d82f261ae8f2b54d2d53270d00c7f06aa1715f7539cc44d76f1e852999a66f4c56c136f2fe38980790e5aa7ef8c2d2256b5747d2d132dde0241d87aedbe71248ceb346b5fbf4ddaf77fb8edde1976ecaa7d76bb257eda6a30666dc479354c86bf43effd02311e7f0fcc2c7d4774d03ba8f7b03b0e48cef452825e6cea25666656f3c729b4d50c2626618743c09bd2d5c392ca699f683a5a8dfaaef41bdc3f309",
+          "authTag": "4548c073ffb914e6e47fd7dcea449fe4"
+        },
+        "response_time": 0.731
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/requests",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "b64a5563dbffaeea9ed48765",
+          "encryptedData": "1dbb85d8deac1e13ae341a6b4c214621cbf72f28a182dc380f01e106d82f261ae8f2b54d2d53270d00c7f06aa1715f7539cc44d76f1e852999a66f4c56c136f2fe38980790e5aa7ef8c2d2256b5747d2d132dde0241d87aedbe71248ceb346b5fbf4ddaf77fb8edde1976ecaa7d76bb257eda6a30666dc479354c86bf43effd02311e7f0fcc2c7d4774d03ba8f7b03b0e48cef452825e6cea25666656f3c729b4d50c2626618743c09bd2d5c392ca699f683a5a8dfaaef41bdc3f309",
+          "authTag": "4548c073ffb914e6e47fd7dcea449fe4"
+        },
+        "status_code": 200,
+        "response_body": {
+          "status": true,
+          "message": "Encrypted response",
+          "encryptedData": "d72ae20739f374146c315dd502cfbceb3aa1e26de1749abd866f081362ad8bd7e6bcdff0f4bcb8a090663833771c19c7adc4c85d0694ada14e5976461702272c5cab0b852857a204395da1b07d62fb0aeb404a95fa24c9ca6b35aa5db8df20e6d4ed4da9d06b07df936ed9fc17f8f8e370f53d1e969a5a5760848763e72dbafe9d0994ca96a7deb179f25efdfd68c48e0c229a1e61dc58e5",
+          "iv": "f183c811d36f6fa611b09b62",
+          "authTag": "33df1b6edc923b9f31e428965db8700e"
+        },
+        "response_time": 0.914
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/decrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "f183c811d36f6fa611b09b62",
+          "encryptedData": "d72ae20739f374146c315dd502cfbceb3aa1e26de1749abd866f081362ad8bd7e6bcdff0f4bcb8a090663833771c19c7adc4c85d0694ada14e5976461702272c5cab0b852857a204395da1b07d62fb0aeb404a95fa24c9ca6b35aa5db8df20e6d4ed4da9d06b07df936ed9fc17f8f8e370f53d1e969a5a5760848763e72dbafe9d0994ca96a7deb179f25efdfd68c48e0c229a1e61dc58e5",
+          "authTag": "33df1b6edc923b9f31e428965db8700e",
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Decryption successful",
+          "decrypted": "{\"RESPONSE_CODE\":\"999\",\"RESPONSE_MESSAGE\":\"Duplicate Entry\",\"RESPONSE_STATUS\":\"FAILED\",\"ORDER_ID\":\"DUPLICATE_12345\",\"AMOUNT\":\"1000\",\"TRANSACTION_ID\":\"\"}"
+        },
+        "response_time": 0.793
+      }
+    ]
+  },
+  {
+    "test_name": "test_missing_hexkey",
+    "status": "PASSED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/encrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "data": {
+            "orderId": "ORD_20cb94336f",
+            "amount": "1000",
+            "customerEmail": "shamihh@example.com",
+            "customerMobile": "8281233876",
+            "customerName": "shamvu",
+            "transactionMode": "UPI_INTENT",
+            "vpa": "success@ybl"
+          },
+          "hexKey": ""
+        },
+        "status_code": 400,
+        "response_body": {
+          "message": "Missing data or hexKey"
+        },
+        "response_time": 0.738
+      }
+    ]
+  },
+  {
+    "test_name": "test_invalid_email",
+    "status": "PASSED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/encrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "data": {
+            "orderId": "ORD_0372f0e509",
+            "amount": "1000",
+            "customerEmail": "invalid-email",
+            "customerMobile": "8281233876",
+            "customerName": "shamvu",
+            "transactionMode": "UPI_INTENT",
+            "vpa": "success@ybl"
+          },
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Data encrypted successfully",
+          "iv": "1626270bb7bfda3f087a76cd",
+          "encryptedData": "2b6614b31a5947e5f7ac0e7b6d8ea31bcd5e3e654cbb1e5f828f576965d9d52e6b4e170dcf1908f5cb5020f000d029475101c7dce8f669f9a7776cd230fdd311bed7c2d5602c009313d1a03ee393ff1e2d9bf779ef0344af1833611b9c02e5703045663f657e1d5daf4f5920212950e68d45a6d694130fcbdc3dcb9bbbc79ec33b9b38c17922d1e35bdd795127be5a50eddcd625de6a3510afe3748db984c403ab31e1ab1ee9a9fc9a8c86378d9e9cbceb63c06897",
+          "authTag": "e078f9552da53c411711b9dadf3e96e6"
+        },
+        "response_time": 0.675
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/requests",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "1626270bb7bfda3f087a76cd",
+          "encryptedData": "2b6614b31a5947e5f7ac0e7b6d8ea31bcd5e3e654cbb1e5f828f576965d9d52e6b4e170dcf1908f5cb5020f000d029475101c7dce8f669f9a7776cd230fdd311bed7c2d5602c009313d1a03ee393ff1e2d9bf779ef0344af1833611b9c02e5703045663f657e1d5daf4f5920212950e68d45a6d694130fcbdc3dcb9bbbc79ec33b9b38c17922d1e35bdd795127be5a50eddcd625de6a3510afe3748db984c403ab31e1ab1ee9a9fc9a8c86378d9e9cbceb63c06897",
+          "authTag": "e078f9552da53c411711b9dadf3e96e6"
+        },
+        "status_code": 200,
+        "response_body": {
+          "status": true,
+          "message": "Encrypted response",
+          "encryptedData": "180b117b1fe6b85f613adfc14db0cd0286aeae07e01ff709235d0f8461f536b9573f3def2402ccb4a841675d0789ca43d4390802bb4d52772240995e20f3b82d30e4875229626258bcc75567143963e8b6b033308e2daaebfc968ac248c8e045085f5f30df14c071adf04a09c3b14038ef424a3ee90acb306b8333248de4ff652120d320fc36230847bfa946882def30250d69cac26a5cfb9fa571d6fded3f70f437b2bf8eb9e0",
+          "iv": "a808a69d80c50a74da2bb051",
+          "authTag": "8a6fba7792f6a5ac122ede0544705896"
+        },
+        "response_time": 0.735
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/decrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "a808a69d80c50a74da2bb051",
+          "encryptedData": "180b117b1fe6b85f613adfc14db0cd0286aeae07e01ff709235d0f8461f536b9573f3def2402ccb4a841675d0789ca43d4390802bb4d52772240995e20f3b82d30e4875229626258bcc75567143963e8b6b033308e2daaebfc968ac248c8e045085f5f30df14c071adf04a09c3b14038ef424a3ee90acb306b8333248de4ff652120d320fc36230847bfa946882def30250d69cac26a5cfb9fa571d6fded3f70f437b2bf8eb9e0",
+          "authTag": "8a6fba7792f6a5ac122ede0544705896",
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Decryption successful",
+          "decrypted": "{\"RESPONSE_CODE\":\"999\",\"RESPONSE_STATUS\":\"FAILED\",\"RESPONSE_MESSAGE\":\"Invalid Email\",\"ORDER_ID\":\"ORD_0372f0e509\",\"AMOUNT\":\"1000\",\"UTR\":\"\",\"AID\":\"\",\"TRANSACTION_ID\":\"\"}"
+        },
+        "response_time": 0.951
+      }
+    ]
+  },
+  {
+    "test_name": "test_invalid_customer_mobile",
+    "status": "PASSED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/encrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "data": {
+            "orderId": "ORD_b570180d97",
+            "amount": "1000",
+            "customerEmail": "shamihh@example.com",
+            "customerMobile": "12345",
+            "customerName": "shamvu",
+            "transactionMode": "UPI_INTENT",
+            "vpa": "success@ybl"
+          },
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Data encrypted successfully",
+          "iv": "632a6f56b51e2faa02880050",
+          "encryptedData": "b7ac6787997fcac68355be502d64696d98663f3bad13216ad44760bb726b95b059e0c12d55905d154bd58ac3f158316491a0e5d8b40b25eca4685b10e285083ff248799266677e9b2d08fe2f52105bcb86227588acd1b1948ecd18955a65e5c6a37f8254097f66200e3806f437a7f52622477a256c19cb55d6928826bb96a0203f548a0572d5810d1c6fe4aec54ed33ad325f89d7c6771d81c51df613cb99ecd4fe34718ea0228576e192494111a5c092512f641b219",
+          "authTag": "6eeceee444d295bfd208e52a5d7f1fd7"
+        },
+        "response_time": 0.916
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/requests",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "632a6f56b51e2faa02880050",
+          "encryptedData": "b7ac6787997fcac68355be502d64696d98663f3bad13216ad44760bb726b95b059e0c12d55905d154bd58ac3f158316491a0e5d8b40b25eca4685b10e285083ff248799266677e9b2d08fe2f52105bcb86227588acd1b1948ecd18955a65e5c6a37f8254097f66200e3806f437a7f52622477a256c19cb55d6928826bb96a0203f548a0572d5810d1c6fe4aec54ed33ad325f89d7c6771d81c51df613cb99ecd4fe34718ea0228576e192494111a5c092512f641b219",
+          "authTag": "6eeceee444d295bfd208e52a5d7f1fd7"
+        },
+        "status_code": 200,
+        "response_body": {
+          "status": true,
+          "message": "Encrypted response",
+          "encryptedData": "7a8d094ba6abf6db1ee4d95607dc3e8d0a9e0cb592902c6c451c00a2ae48dc25597added9fbdd318cf599f78322a9a6fdfff1248c6935a8b3ae34b443b99e64f0cabc70af90f638e2c5798cb616eed3a7b54a59a26759e7ac825e2ea41e0724f7fca2506e99cda69de9bb332fc41a75c302d0275d27bbddd9bff2e1b6ee0190eab7ca39dd2910a03c0896f00088ee287fc11d64291190359ebd5f0ea5e5bd906cb206d0d5de8b2ce0f057b358e86d46a15ffad26182a7a5e5c71530737dc1572eb904f7e1bbfb8ce65cfe522b8b8efa12553a3a08d",
+          "iv": "49b6bc8448ecd91b266ab99f",
+          "authTag": "95123e836b7b57f34fef0569ee679503"
+        },
+        "response_time": 0.826
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/decrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "49b6bc8448ecd91b266ab99f",
+          "encryptedData": "7a8d094ba6abf6db1ee4d95607dc3e8d0a9e0cb592902c6c451c00a2ae48dc25597added9fbdd318cf599f78322a9a6fdfff1248c6935a8b3ae34b443b99e64f0cabc70af90f638e2c5798cb616eed3a7b54a59a26759e7ac825e2ea41e0724f7fca2506e99cda69de9bb332fc41a75c302d0275d27bbddd9bff2e1b6ee0190eab7ca39dd2910a03c0896f00088ee287fc11d64291190359ebd5f0ea5e5bd906cb206d0d5de8b2ce0f057b358e86d46a15ffad26182a7a5e5c71530737dc1572eb904f7e1bbfb8ce65cfe522b8b8efa12553a3a08d",
+          "authTag": "95123e836b7b57f34fef0569ee679503",
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Decryption successful",
+          "decrypted": "{\"RESPONSE_CODE\":\"999\",\"RESPONSE_STATUS\":\"FAILED\",\"RESPONSE_MESSAGE\":\"Invalid Mobile Number (must be 10 digits or start with +91)\",\"ORDER_ID\":\"ORD_b570180d97\",\"AMOUNT\":\"1000\",\"UTR\":\"\",\"AID\":\"\",\"TRANSACTION_ID\":\"\"}"
+        },
+        "response_time": 0.717
+      }
+    ]
+  },
+  {
+    "test_name": "test_missing_order_id",
+    "status": "PASSED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/encrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "data": {
+            "amount": "1000",
+            "customerEmail": "shamihh@example.com",
+            "customerMobile": "8281233876",
+            "customerName": "shamvu",
+            "transactionMode": "UPI_INTENT",
+            "vpa": "success@ybl"
+          },
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Data encrypted successfully",
+          "iv": "e0cf021c167257d2fcbe7819",
+          "encryptedData": "429f9c8f6bbb51a855231ac90f1f575add8bcacb9fcbccef7ffe15733fb81cf1de2e464050005381a86e7ca913dbd5fea1296d22d9a61759661b2a1f9873e244a721b48c7fd2bba862b1d5a9abae03fd54972f1e47fab121a7ede802dd73a2dcc66b69a523a91b5edb77438ec892784a44bd21c4e04b23480adb9eef7a1905cfa7ca94ca8f320af6a3f32db91dbfec12d908914de5d4e2a0b043866661f9ba8a",
+          "authTag": "da2703edcb8883794d975779fdabd786"
+        },
+        "response_time": 0.692
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/requests",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "e0cf021c167257d2fcbe7819",
+          "encryptedData": "429f9c8f6bbb51a855231ac90f1f575add8bcacb9fcbccef7ffe15733fb81cf1de2e464050005381a86e7ca913dbd5fea1296d22d9a61759661b2a1f9873e244a721b48c7fd2bba862b1d5a9abae03fd54972f1e47fab121a7ede802dd73a2dcc66b69a523a91b5edb77438ec892784a44bd21c4e04b23480adb9eef7a1905cfa7ca94ca8f320af6a3f32db91dbfec12d908914de5d4e2a0b043866661f9ba8a",
+          "authTag": "da2703edcb8883794d975779fdabd786"
+        },
+        "status_code": 200,
+        "response_body": {
+          "status": true,
+          "message": "Encrypted response",
+          "encryptedData": "5251c6b2af62b9ccb749fac6516754443ae0b66abae3c891d1ba8402a9b8c22fa0d912369fbf134179ddb8d4716c752a7a2a899f6231b69b60f47308994744feda2c4ac0f492414dae0dba5dd4891a72c4b4283dfb687653392b379aa14ef8d15a5d27715b1897835ed65ddfeca7c87ce031091674e203d3ee4df3",
+          "iv": "4f7193fb9abe2884e0cd8abd",
+          "authTag": "dc5fbcbac68d31c3a552d06989e1e8ed"
+        },
+        "response_time": 0.781
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/decrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "4f7193fb9abe2884e0cd8abd",
+          "encryptedData": "5251c6b2af62b9ccb749fac6516754443ae0b66abae3c891d1ba8402a9b8c22fa0d912369fbf134179ddb8d4716c752a7a2a899f6231b69b60f47308994744feda2c4ac0f492414dae0dba5dd4891a72c4b4283dfb687653392b379aa14ef8d15a5d27715b1897835ed65ddfeca7c87ce031091674e203d3ee4df3",
+          "authTag": "dc5fbcbac68d31c3a552d06989e1e8ed",
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Decryption successful",
+          "decrypted": "{\"RESPONSE_CODE\":\"999\",\"RESPONSE_MESSAGE\":\"Duplicate Entry\",\"RESPONSE_STATUS\":\"FAILED\",\"AMOUNT\":\"1000\",\"TRANSACTION_ID\":\"\"}"
+        },
+        "response_time": 0.709
+      }
+    ]
+  },
+  {
+    "test_name": "test_invalid_amount",
+    "status": "FAILED",
+    "api_logs": [
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/encrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "data": {
+            "orderId": "ORD_660905cda9",
+            "amount": "abc",
+            "customerEmail": "shamihh@example.com",
+            "customerMobile": "8281233876",
+            "customerName": "shamvu",
+            "transactionMode": "UPI_INTENT",
+            "vpa": "success@ybl"
+          },
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Data encrypted successfully",
+          "iv": "30c667f1e02449cd4202987f",
+          "encryptedData": "ca3d85938548f3dc5fb2dbf9ef35cd48779bafd45675ceb4704612505e91fb22ce1c5ef4dc533f79d066222ca8d600e4878115908ccdb922414a9fbd0128240a0557f498bd7480706e0cfefba60aaa69864e2ab5f4e52d1403b950c45afc5dd4ca98372b2b3a0a1a1e729a11daf8023c411c18463031501c5a6c79d5bce19d77e7e38a513553f92c4febd8ff91389251b2340dfc9050176d4e74178d203a5ba88db5ccb8d4105d5cb483808c7ab501d996cc387550ead40b6de7",
+          "authTag": "5f8f9f8f070f4c4744c6bf499dd572e2"
+        },
+        "response_time": 0.662
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/requests",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "30c667f1e02449cd4202987f",
+          "encryptedData": "ca3d85938548f3dc5fb2dbf9ef35cd48779bafd45675ceb4704612505e91fb22ce1c5ef4dc533f79d066222ca8d600e4878115908ccdb922414a9fbd0128240a0557f498bd7480706e0cfefba60aaa69864e2ab5f4e52d1403b950c45afc5dd4ca98372b2b3a0a1a1e729a11daf8023c411c18463031501c5a6c79d5bce19d77e7e38a513553f92c4febd8ff91389251b2340dfc9050176d4e74178d203a5ba88db5ccb8d4105d5cb483808c7ab501d996cc387550ead40b6de7",
+          "authTag": "5f8f9f8f070f4c4744c6bf499dd572e2"
+        },
+        "status_code": 200,
+        "response_body": {
+          "status": true,
+          "message": "Encrypted response",
+          "encryptedData": "f3c5d55994e84954b053401af1abcc260df7e0ff89c0b7e26b78d5b7008e8712ff9f83544844544ccf842c3b5482acca7ff5c9ec32176c6b56135162bb5307ad922dd3de9e6ab26758044a15a3d9dabf99cca8256aa49833e0554c8121277690281a545178e85e2d246547f7fda7441e4fa1d592bd8f62aa6eedcf216371d3833d27b75f0ceb2e02810a9c20fef0a8de4195ef8352255f08a268e3423e32d2b08bcedda087146c0124e4868b2f5b0e1db35fd9190d45d7c2a41682fb46ba81da0824b081806002d1497255b671a5b9c4f1fef42b563ccf1d13bba67e4e7771c6555b2255a543f92d5e97d88640e740d1faa37f8e7c47e73932a566c24e63e4c13aedde4e5d2c07c919b080105593539b045e1c42b94ced378990a8ac5cabdc61fc2138be49164b791e615f368175a89f5623323c84f239a1300528345b0a8b383d5bac7cb53e94e0f0bed26c42f297daae7b67b91be6b10cab2dd37da38e17c42c7d4e5c2a8eac2ee8c7b9166de1106f1cbd336946fbc243beb25f8ff2c44970f7fe0a78573e4367bbb8c7fc6b355a21b3d546f6190fb6180f1c52b7425021e3a6229ac3077f296c5bf42ce7dc61bf619127b3aa43170540426400426f92cb8ca65cf715c172c6c43fa927acc096eef9163c5a7b0dc8655f42fbaea174f8b752440df01e724787831bbf6c41a7a41febb835fa90a91eeeacb747163669c3c14ca48e8ea6281ff3327c14b637dd10acb67e001bf02d72abf2d3bcfc026e5b8f8fcfbdea900fcd7bef7f068953a081475e2ae4e35bb91405a9498b0a231aa12669524a6877f4399b823b0a5fd8633c33051ceedf03d2f3c52c38945e07fb0cd14c5ec1f3c52bd32a1fd746b5f45a1dc49fb7e8f267181a8c2e52f036a1976569760898bc3615fb1a5de7c1b9d74323a65f3ca561e608240a3871991281c03fc5cd4ac7c5ecc331e9b889131ed582dc8d0ff85a97a1fa3f952407a98bc43f469bb27054a325865551147766719c18da2dcc778c411244eb7bd1bb5ccd5ad682f45f0feb798d2de2649ea1534a846c9075ece49b56f2344620dd3083be2581845e35df57fba9c6317be49adfc1532890b137d59971fb58592cae477369dde594896e363963850e1d255b3700e63e87748be1cf5e08b58ca4334ff994efc3461bbec9f98c0faa21846e9be9745b13713293edf3b1fb3349d0b28b74a2f8b50f83cf6c90a611d9683241e09ebcde3251c67c71820354840a71d86cdfc9655fe501c86a85f10548a36e70ab70d799ca8bf47d78d827de0d1b6c685f36d07bd7b88fe363428e93b927190ecf98aebde1cf57f5a8d5bc4180620696fd07836c0927d3df1dc47686d1795f44889b3addd263517d4c85b0db39378ff4106bf2097e7de4d8cbd3cfed86420f43d0d53c777b9be0ecb87d0f75ba918eb2e942378eeb9e4d4ca9cc777776f2d8d9da6f713edd0d6d0dfd56ff3fc639cb4626ea167f23b768b3df50dc88297111a1fef3bdab8b299250f458c90a05d9712b0421992f42f38535c22e3c93da453b7c5e78820db7c9200e055d5252db4fbde04ccc04775ff5140ca716b5d6071c09f0a0a3a9a173f0ad3b54b68158877e136b6d3434c71b7b4c0f412fcf107ef0ff6f03d3e56c0aa022029eec501553f7851a6093c039834b1ec9461317d2695a90926e021d5293d56611c2a53faf87a6bcdec098022aa7f63cda52dc626026b5082c18d1b1e347e6ff6965698e7fe57dde42b84390037fdf9c089238529ecac0104efbe574f31603817f33e852643b0a42611cf5a2318427083f7ca562e47c43ee29cd8deb09e944f2ec3c94a17cc1a1aac0edd36302abb4c33571df637c0e6c303063298a4ce6f37411872c5c4c17c162208dbeb5d846d3b3eedfc1b9342c3f2d7cf97c22a3532c4312f93f07caa0030883c60640763aa1ee7af088658475b129274f513148df1cffa47a977177a7fd5bd2d476ab316c3113b6e19c1abaffe4bbf60bc1a8276237fc0a865f147aa8d3c937fd05e18e4395d256f175723733939030a5c061a24a6575edbb07dcc129467e69033d842dbefb528ba833bb74e7b7afbe72bb78d311948eef8042e026c5cf5da7eb637aa26ddf56f6500b87efaf720fab0e0213686393473b276be0717267872964fa361b6b8bb67180ac926a10d91706cb5cc478ee899caa37ec94f595f16aa3f875294dfb78e18e6f2b893ea09dca57c4676bf073bd58c8a5501a3502356c5666f41283708dd25514818e1d60cbe0e37e99f28fa18acd2532c28c85cd46c8b04cfd6223dfd4e3e50062c3bf8b26c631fd9511f4a0574133ff9e0313d3403830aeb3a9a94f9e2f4790bad5066089e23b91e07eace36f803cd452f1991bf0e94909df6afdaa542986c2938841e5f4015e4a831c4f6de7ee78cd85388fd21c2fa59678e175c29910c285a884939349cac92c77ae77ad75aada243d25c05f973e1d9283e4fc259d3a35ad55bcab252dae46e1a6a9d2bbe2f46baa327a78911d3eb916d55307ba1d4875c8ca258f4d24c39c30fad6f2e12c2bc70cc17c005e20d8ca4e1a296d157dbff54b8c8d04ec178b2d7f783320b610b0c761add9b17895edcc6cf043579289ce891290ebffef1cd5a4b276f91c9df4cc66fd13ab176e5b0af9843a09add7cd62a7594d1711f4fe71cbab8b8a97436699285d922e82a55a5e9d55959198de0dfe05761fed2eea17586abf84891da7cd316a0cc964ffd3df30ece54a6fce4b00a10c7a2d486227ffd86f197668a9f09e05741cac788d93fc625e456cd811ede648fa42af52441081a7ed90783e5b64498b200ae3dc36e23527ecea3a3848d41760d9fdd0e1722c3e0be400c98aefb62b36cd4183f52d2b5ba1d7b82e1ccacb557e596f41315f06b7b8e5e9f84e513f7c4e25a87a2ef0dd63c40323bbeba57aa3e83a320bf84ea1b2dd714e340a915192f5d7a51b7edb792b0239e71cb807709647604e308a68a67e04278499eec4448cdeb9a04062c54d08bc10450b3a91d808c919305fd8ddc3dab92eabbb1968dae62aae2e9e52fc6c8af88e7043380ff183c5bd8134d5d6287d51225b337f9d85450bb71de50cf4fa1f28dba15ad640df7b1ad36533bce625b08c9b0326e3377af2f822ca48ccb96fdb88bc47955065e525453d8d984d8062d5b4c5f82db002ef230063283bc8fdbeca73314165dba44ae4e5bdebf942d1798a3338a5d4335be7fb3a1ce768081729a98613cd9b88c7ead41c3629e3186e17bde1fd7f37b1ac413890e60b710019b15a54fbe9b6eb42429f7dd70d5c8b2adf7029881a10f75a2a3f9fccc37c58e672fb65223533679bc417550dd28eb4730673d1b2f85b56e309a35f2f192d7e8f553d7e0d763c4c0ff66a8b258472a54cc94615895687a9c123f92370e617b9f0bca9c37679fa0616031f0ed42162aeb2fb7a9b7d68f7ea6ffcad9f3cb51de0118eb3b084770ad27cc1570e310142088e2f95016603e5910ed6e787767d2a24570c37fb000278d4a86c44c4c6ec08d797c031710f25a445466b302c4efb672acec2246ebeb74cab5ea880557eab4280f947a71f82d4a3abb7dca1ef482325690bf57d0e5dae47835ebb631f04afa56be5b2367221fba0977d8662ba78d60164593a644174000643fed66381a3b6d4267ac7510b5b51c69639c4ddd18b35f6aabb2649daedc6072e7a3951e06b97d39e46c0b877d9378260c0395f1a7ca96b8c624a52fdbc18a0add8e1a192ee72306ec15b8089d1b97a87f63d95a8710a6d7d9a120fae1cad6538d6c7c1d7c323ef39a42bb912086f6abc8b62c21022e71a42cf335c00795ed51acd7284c18fcfca045964dd67316d64898bed64028b49048ada7ea2c2114859bca2ccd4b2741470d9e7ecadaa059b21460d0c262e0649c9b0bfb411ec9710849701f13c67b8ef180ffebc0474bd3ad931dabcfa3109c718b1b6c865fe09e16fc724d008fa2de6c9fa5f0273d057489c6871a6d7e3b51062c1fbc9cd02a56069d914a7dbf2d11c9ce797056fccc6d99f9fa291a696fb2ce268fae41886337f835f6a2d8a28c13c09935d408d6eac1d9de62193511299f470db6e31a8c4223d5aac7dbf68edfde392b7627fe789f693b28aedef9930809bf4e475d39544ee7c4e7e28530444ead4fb57861a4d30c0b1ea3b4b0bc5ca2afbe4ea7817a57848ae6507386c1e9642acae925c30e32e6fe0e1033d0dc1d6e0bd9b7ffca5d7fbd23a2c619d7e73ccc14b156cb599cd29daa170e02ccbd22810d92023b7a2a6d10eb96bc0c7843dae3fff3b1e489d2b89d2ca6d37ff6c106cbb9cde00565d67490c930a48983c5b705ec609b658a6d78ce7f223ddd1557f719d5d845b06fd62c4c96a4c0d5b79b56e6823a5dc3d86fc1e4301d005abaa570f182d3ad2b7ccc220911ca7e7d5b81e9f007533622afbe469f60f277c218664311c27779aacc76ab19a4d7feaeaabc291c3ec2f1bb70b747f34d6d8096f7b77b36ae76def190076ac5a445a368199deede9ae1a87dc54615b8d6d35a656643b90c75a20b5c24830808b0d7ab834c6278ee5ccfa7977b879029305add90b311ca14bd727be1b8577561f815b62c284422f8d8accc436fdd6f4b03ebdad686f014f6f466c15e29978b42cac1ad238d4385e138c39cb887b0b376b5b9586df127bddb50ec225513991ac593c148afca504706db1cdfe421bdfb94da0bde7b0c2152f4ee8ebb4539964a643911b908f3768f21af7877d19bd25ce84ce143f651f4a0dfd87f474c4e1008e0d6484abd1e9c6af43607700cab75e7804328f855ac9ea1e9a8e5bd1075614339e2684cc8dc4c4bd1fc486ea13e85dbeeff23065a1fa49bf48114f4a7e2a4d65366684aa9189b9351a70431cb3278d4eeeb6dd52b033f51bd6",
+          "iv": "7b0897c7684da030605bb8ef",
+          "authTag": "8f224cdda7d66588d8c86116a66cb3e8"
+        },
+        "response_time": 1.55
+      },
+      {
+        "url": "https://preprod.admin.kwicpe.com/api/v2/payin/decrypt",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": "6fe299f8b00bc56292cb.MwiawJ0GKmA8TvWi2T6vnVARfk7hFHI9Ay8i"
+        },
+        "request_body": {
+          "iv": "7b0897c7684da030605bb8ef",
+          "encryptedData": "f3c5d55994e84954b053401af1abcc260df7e0ff89c0b7e26b78d5b7008e8712ff9f83544844544ccf842c3b5482acca7ff5c9ec32176c6b56135162bb5307ad922dd3de9e6ab26758044a15a3d9dabf99cca8256aa49833e0554c8121277690281a545178e85e2d246547f7fda7441e4fa1d592bd8f62aa6eedcf216371d3833d27b75f0ceb2e02810a9c20fef0a8de4195ef8352255f08a268e3423e32d2b08bcedda087146c0124e4868b2f5b0e1db35fd9190d45d7c2a41682fb46ba81da0824b081806002d1497255b671a5b9c4f1fef42b563ccf1d13bba67e4e7771c6555b2255a543f92d5e97d88640e740d1faa37f8e7c47e73932a566c24e63e4c13aedde4e5d2c07c919b080105593539b045e1c42b94ced378990a8ac5cabdc61fc2138be49164b791e615f368175a89f5623323c84f239a1300528345b0a8b383d5bac7cb53e94e0f0bed26c42f297daae7b67b91be6b10cab2dd37da38e17c42c7d4e5c2a8eac2ee8c7b9166de1106f1cbd336946fbc243beb25f8ff2c44970f7fe0a78573e4367bbb8c7fc6b355a21b3d546f6190fb6180f1c52b7425021e3a6229ac3077f296c5bf42ce7dc61bf619127b3aa43170540426400426f92cb8ca65cf715c172c6c43fa927acc096eef9163c5a7b0dc8655f42fbaea174f8b752440df01e724787831bbf6c41a7a41febb835fa90a91eeeacb747163669c3c14ca48e8ea6281ff3327c14b637dd10acb67e001bf02d72abf2d3bcfc026e5b8f8fcfbdea900fcd7bef7f068953a081475e2ae4e35bb91405a9498b0a231aa12669524a6877f4399b823b0a5fd8633c33051ceedf03d2f3c52c38945e07fb0cd14c5ec1f3c52bd32a1fd746b5f45a1dc49fb7e8f267181a8c2e52f036a1976569760898bc3615fb1a5de7c1b9d74323a65f3ca561e608240a3871991281c03fc5cd4ac7c5ecc331e9b889131ed582dc8d0ff85a97a1fa3f952407a98bc43f469bb27054a325865551147766719c18da2dcc778c411244eb7bd1bb5ccd5ad682f45f0feb798d2de2649ea1534a846c9075ece49b56f2344620dd3083be2581845e35df57fba9c6317be49adfc1532890b137d59971fb58592cae477369dde594896e363963850e1d255b3700e63e87748be1cf5e08b58ca4334ff994efc3461bbec9f98c0faa21846e9be9745b13713293edf3b1fb3349d0b28b74a2f8b50f83cf6c90a611d9683241e09ebcde3251c67c71820354840a71d86cdfc9655fe501c86a85f10548a36e70ab70d799ca8bf47d78d827de0d1b6c685f36d07bd7b88fe363428e93b927190ecf98aebde1cf57f5a8d5bc4180620696fd07836c0927d3df1dc47686d1795f44889b3addd263517d4c85b0db39378ff4106bf2097e7de4d8cbd3cfed86420f43d0d53c777b9be0ecb87d0f75ba918eb2e942378eeb9e4d4ca9cc777776f2d8d9da6f713edd0d6d0dfd56ff3fc639cb4626ea167f23b768b3df50dc88297111a1fef3bdab8b299250f458c90a05d9712b0421992f42f38535c22e3c93da453b7c5e78820db7c9200e055d5252db4fbde04ccc04775ff5140ca716b5d6071c09f0a0a3a9a173f0ad3b54b68158877e136b6d3434c71b7b4c0f412fcf107ef0ff6f03d3e56c0aa022029eec501553f7851a6093c039834b1ec9461317d2695a90926e021d5293d56611c2a53faf87a6bcdec098022aa7f63cda52dc626026b5082c18d1b1e347e6ff6965698e7fe57dde42b84390037fdf9c089238529ecac0104efbe574f31603817f33e852643b0a42611cf5a2318427083f7ca562e47c43ee29cd8deb09e944f2ec3c94a17cc1a1aac0edd36302abb4c33571df637c0e6c303063298a4ce6f37411872c5c4c17c162208dbeb5d846d3b3eedfc1b9342c3f2d7cf97c22a3532c4312f93f07caa0030883c60640763aa1ee7af088658475b129274f513148df1cffa47a977177a7fd5bd2d476ab316c3113b6e19c1abaffe4bbf60bc1a8276237fc0a865f147aa8d3c937fd05e18e4395d256f175723733939030a5c061a24a6575edbb07dcc129467e69033d842dbefb528ba833bb74e7b7afbe72bb78d311948eef8042e026c5cf5da7eb637aa26ddf56f6500b87efaf720fab0e0213686393473b276be0717267872964fa361b6b8bb67180ac926a10d91706cb5cc478ee899caa37ec94f595f16aa3f875294dfb78e18e6f2b893ea09dca57c4676bf073bd58c8a5501a3502356c5666f41283708dd25514818e1d60cbe0e37e99f28fa18acd2532c28c85cd46c8b04cfd6223dfd4e3e50062c3bf8b26c631fd9511f4a0574133ff9e0313d3403830aeb3a9a94f9e2f4790bad5066089e23b91e07eace36f803cd452f1991bf0e94909df6afdaa542986c2938841e5f4015e4a831c4f6de7ee78cd85388fd21c2fa59678e175c29910c285a884939349cac92c77ae77ad75aada243d25c05f973e1d9283e4fc259d3a35ad55bcab252dae46e1a6a9d2bbe2f46baa327a78911d3eb916d55307ba1d4875c8ca258f4d24c39c30fad6f2e12c2bc70cc17c005e20d8ca4e1a296d157dbff54b8c8d04ec178b2d7f783320b610b0c761add9b17895edcc6cf043579289ce891290ebffef1cd5a4b276f91c9df4cc66fd13ab176e5b0af9843a09add7cd62a7594d1711f4fe71cbab8b8a97436699285d922e82a55a5e9d55959198de0dfe05761fed2eea17586abf84891da7cd316a0cc964ffd3df30ece54a6fce4b00a10c7a2d486227ffd86f197668a9f09e05741cac788d93fc625e456cd811ede648fa42af52441081a7ed90783e5b64498b200ae3dc36e23527ecea3a3848d41760d9fdd0e1722c3e0be400c98aefb62b36cd4183f52d2b5ba1d7b82e1ccacb557e596f41315f06b7b8e5e9f84e513f7c4e25a87a2ef0dd63c40323bbeba57aa3e83a320bf84ea1b2dd714e340a915192f5d7a51b7edb792b0239e71cb807709647604e308a68a67e04278499eec4448cdeb9a04062c54d08bc10450b3a91d808c919305fd8ddc3dab92eabbb1968dae62aae2e9e52fc6c8af88e7043380ff183c5bd8134d5d6287d51225b337f9d85450bb71de50cf4fa1f28dba15ad640df7b1ad36533bce625b08c9b0326e3377af2f822ca48ccb96fdb88bc47955065e525453d8d984d8062d5b4c5f82db002ef230063283bc8fdbeca73314165dba44ae4e5bdebf942d1798a3338a5d4335be7fb3a1ce768081729a98613cd9b88c7ead41c3629e3186e17bde1fd7f37b1ac413890e60b710019b15a54fbe9b6eb42429f7dd70d5c8b2adf7029881a10f75a2a3f9fccc37c58e672fb65223533679bc417550dd28eb4730673d1b2f85b56e309a35f2f192d7e8f553d7e0d763c4c0ff66a8b258472a54cc94615895687a9c123f92370e617b9f0bca9c37679fa0616031f0ed42162aeb2fb7a9b7d68f7ea6ffcad9f3cb51de0118eb3b084770ad27cc1570e310142088e2f95016603e5910ed6e787767d2a24570c37fb000278d4a86c44c4c6ec08d797c031710f25a445466b302c4efb672acec2246ebeb74cab5ea880557eab4280f947a71f82d4a3abb7dca1ef482325690bf57d0e5dae47835ebb631f04afa56be5b2367221fba0977d8662ba78d60164593a644174000643fed66381a3b6d4267ac7510b5b51c69639c4ddd18b35f6aabb2649daedc6072e7a3951e06b97d39e46c0b877d9378260c0395f1a7ca96b8c624a52fdbc18a0add8e1a192ee72306ec15b8089d1b97a87f63d95a8710a6d7d9a120fae1cad6538d6c7c1d7c323ef39a42bb912086f6abc8b62c21022e71a42cf335c00795ed51acd7284c18fcfca045964dd67316d64898bed64028b49048ada7ea2c2114859bca2ccd4b2741470d9e7ecadaa059b21460d0c262e0649c9b0bfb411ec9710849701f13c67b8ef180ffebc0474bd3ad931dabcfa3109c718b1b6c865fe09e16fc724d008fa2de6c9fa5f0273d057489c6871a6d7e3b51062c1fbc9cd02a56069d914a7dbf2d11c9ce797056fccc6d99f9fa291a696fb2ce268fae41886337f835f6a2d8a28c13c09935d408d6eac1d9de62193511299f470db6e31a8c4223d5aac7dbf68edfde392b7627fe789f693b28aedef9930809bf4e475d39544ee7c4e7e28530444ead4fb57861a4d30c0b1ea3b4b0bc5ca2afbe4ea7817a57848ae6507386c1e9642acae925c30e32e6fe0e1033d0dc1d6e0bd9b7ffca5d7fbd23a2c619d7e73ccc14b156cb599cd29daa170e02ccbd22810d92023b7a2a6d10eb96bc0c7843dae3fff3b1e489d2b89d2ca6d37ff6c106cbb9cde00565d67490c930a48983c5b705ec609b658a6d78ce7f223ddd1557f719d5d845b06fd62c4c96a4c0d5b79b56e6823a5dc3d86fc1e4301d005abaa570f182d3ad2b7ccc220911ca7e7d5b81e9f007533622afbe469f60f277c218664311c27779aacc76ab19a4d7feaeaabc291c3ec2f1bb70b747f34d6d8096f7b77b36ae76def190076ac5a445a368199deede9ae1a87dc54615b8d6d35a656643b90c75a20b5c24830808b0d7ab834c6278ee5ccfa7977b879029305add90b311ca14bd727be1b8577561f815b62c284422f8d8accc436fdd6f4b03ebdad686f014f6f466c15e29978b42cac1ad238d4385e138c39cb887b0b376b5b9586df127bddb50ec225513991ac593c148afca504706db1cdfe421bdfb94da0bde7b0c2152f4ee8ebb4539964a643911b908f3768f21af7877d19bd25ce84ce143f651f4a0dfd87f474c4e1008e0d6484abd1e9c6af43607700cab75e7804328f855ac9ea1e9a8e5bd1075614339e2684cc8dc4c4bd1fc486ea13e85dbeeff23065a1fa49bf48114f4a7e2a4d65366684aa9189b9351a70431cb3278d4eeeb6dd52b033f51bd6",
+          "authTag": "8f224cdda7d66588d8c86116a66cb3e8",
+          "hexKey": "6e7801a8a65ea27f6fe99c906e220b612d885bb1e52bc169837115b7441e8a6c"
+        },
+        "status_code": 200,
+        "response_body": {
+          "message": "Decryption successful",
+          "decrypted": "{\"QR_STRING\":\"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\",\"RESPONSE_CODE\":\"500\",\"UPI_STRING\":\"upi://pay?pa=PS1.TEST@testbank&pn=Testing\u00b7User&am=abc&tr=a78bb603-c63f-4403-a24d-67531cf1879a\",\"RESPONSE_STATUS\":\"PROCESSING\",\"ORDER_ID\":\"ORD_660905cda9\",\"RESPONSE_MESSAGE\":\"QR Generated Successfully.\",\"TRANSACTION_ID\":\"f28a94b9-8345-4edf-94f7-3933a5c659d0\",\"vpa\":\"success@ybl\"}"
+        },
+        "response_time": 0.682
+      }
+    ],
+    "error": "assert '500' == '999'\n  \n  \u001b[0m\u001b[91m- 999\u001b[39;49;00m\u001b[90m\u001b[39;49;00m\n  \u001b[92m+ 500\u001b[39;49;00m\u001b[90m\u001b[39;49;00m"
   }
 ]

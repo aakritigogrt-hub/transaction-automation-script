@@ -3,11 +3,12 @@ import requests
 import pytest
 from ..utils.payload_factory import get_valid_payout_payload
 from ..config.headers import HEADERS
+from ..config.base_url import BASE_URL
 # =========================
 # CONFIG
 # =========================
 
-URL = "https://preprod.admin.kwicpe.com/api/v1/payout/initiate"
+URL = f"{BASE_URL}/api/v1/payout/initiate"
 
 
 
@@ -74,7 +75,7 @@ def test_negative_amount():
 
     response = send_payout(payload)
     print(response)
-    assert response["statusCode"] == 400
+    assert response["RESPONSE_CODE"] == "999"
 
 
 
@@ -89,7 +90,7 @@ def test_zero_amount():
 
 def test_invalid_mobile():
     payload = get_valid_payout_payload()
-    payload["customerMobile"] = "123"
+    payload["beneMobile"] = "123"
 
     response = send_payout(payload)
 
@@ -98,7 +99,7 @@ def test_invalid_mobile():
 
 def test_invalid_email():
     payload = get_valid_payout_payload()
-    payload["customerEmail"] = "invalidemail"
+    payload["beneEmail"] = "invalidemail"
 
     response = send_payout(payload)
 
