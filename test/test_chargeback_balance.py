@@ -5,18 +5,18 @@ import random
 import time
 import json
 from ..config.headers import HEADERS
+from ..config.base_url import BASE_URL
 # =========================
 # CONFIG
 # =========================
-BASE_URL = "https://staging.admin.kwicpe.com/api/api/v1"
 
 LOGIN_URL = f"{BASE_URL}/admin/auth/login"
 BALANCE_URL = f"{BASE_URL}/admin/transactions/get-admin-balance"
 TXN_URL = f"{BASE_URL}/admin/transactions/get-transaction-by-id"
 RECON_URL = f"{BASE_URL}/reconciliation/create-reconcilation"
 
-PAYIN_URL = "https://staging.admin.kwicpe.com/api/api/v1/payments/requests"
-WEBHOOK_URL = "https://staging.admin.kwicpe.com/api/api/v1/webhooks/get-webhook-payin-data"
+PAYIN_URL = f"{BASE_URL}/payments/requests"
+WEBHOOK_URL = f"{BASE_URL}/webhooks/get-webhook-payin-data"
 
 TIMEOUT = 10
 

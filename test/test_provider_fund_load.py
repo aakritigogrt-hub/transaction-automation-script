@@ -1,25 +1,24 @@
 import requests
 import pytest
 import random
-
+from ..config.base_url import BASE_URL
 # =====================================================
 # CONFIG
 # =====================================================
 
-LOGIN_URL = "https://staging.admin.kwicpe.com/api/api/v1/admin/auth/login"
+LOGIN_URL = f"{BASE_URL}/api/v1/admin/auth/login"
 
 GET_BALANCE_URL = (
-    "https://staging.admin.kwicpe.com/api/api/v1/"
-    "wallet/get-provider-avilable-balance?page=1"
+    f"{BASE_URL}/api/v1/wallet/get-provider-avilable-balance?page=1"
 )
-WALLET_LOAD_URL = "https://staging.admin.kwicpe.com/api/api/v1/wallet/wallet-load"
-PPROVE_WALLET_LOAD_URL = "https://staging.admin.kwicpe.com/api/api/v1/wallet/approve-load-wallet"
-UPDATE_PROVIDER_URL = "https://staging.admin.kwicpe.com/api/api/v1/provider/8bb39faf-bf01-4519-89a5-2742f98a2749"
+WALLET_LOAD_URL = f"{BASE_URL}/api/v1/wallet/wallet-load"
+PPROVE_WALLET_LOAD_URL = f"{BASE_URL}/api/v1/wallet/approve-load-wallet"
+UPDATE_PROVIDER_URL = f"{BASE_URL}/api/v1/provider/13a7d37b-f2ca-4848-ba5b-6ae900451b2d"
 
 EMAIL = "super@gmail.com"
-PASSWORD = "Admin@12345"
+PASSWORD = "Admin@123"
 
-PROVIDER_ID = "8bb39faf-bf01-4519-89a5-2742f98a2749"
+PROVIDER_ID = "13a7d37b-f2ca-4848-ba5b-6ae900451b2d"
 HEADERS_1 = {
     "accept": "application/json",
     "content-type": "application/json",
@@ -34,7 +33,7 @@ HEADERS_1 = {
 def get_token():
     payload = {
         "email": "super@gmail.com",
-        "password": "Admin@12345",
+        "password": "Admin@123",
         "recaptchaToken": "dummy_token"
     }
 
@@ -111,7 +110,7 @@ def update_provider_status(headers, is_active):
         "type": "both",
         "providerPayinComm": "2",
         "providerPayoutComm": "2",
-        "providerName": "stage-pay",
+        "providerName": "test",
         "payinMinPerTxn": "200",
         "payinMaxPerTxn": "10000",
         "payoutMinPerTxn": "200",

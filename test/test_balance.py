@@ -60,13 +60,13 @@
 
 import requests
 import pytest
+from ..config.base_url import BASE_URL
 
-BASE_URL = "https://staging.admin.kwicpe.com/api/api/v1"
 
-LOGIN_URL = f"{BASE_URL}/admin/auth/login"
-BALANCE_URL = f"{BASE_URL}/admin/transactions/get-admin-balance"
-TXN_URL = f"{BASE_URL}/admin/transactions/get-transaction-by-id"
-RECON_URL = f"{BASE_URL}/reconciliation/create-reconcilation"
+LOGIN_URL = f"{BASE_URL}/v1/admin/auth/login"
+BALANCE_URL = f"{BASE_URL}/v1/admin/transactions/get-admin-balance"
+TXN_URL = f"{BASE_URL}/v1/admin/transactions/get-transaction-by-id"
+RECON_URL = f"{BASE_URL}/v1/reconciliation/create-reconcilation"
 
 HEADERS = {
     "accept": "application/json, text/plain, */*",

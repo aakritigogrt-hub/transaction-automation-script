@@ -133,3 +133,25 @@ def test_empty_payload():
 
     assert response["statusCode"] == 401
     assert "accountNo" in response["message"]
+
+
+
+def test_min_amount_error():
+    payload = get_valid_payout_payload()
+    payload["amount"] = "5"
+
+    response = send_payout(payload)
+
+    assert response["RESPONSE_CODE"] == "999"
+    assert response["RESPONSE_STATUS"] == "SETTLEMENT_FAILED"
+    assert "minimum" in response["RESPONSE_MESSAGE"].lower()
+
+def test_max_amount_error():
+    payload = get_valid_payout_payload()
+    payload["amount"] = "11000"
+
+    response = send_payout(payload)
+
+    assert response["RESPONSE_CODE"] == "999"
+    assert response["RESPONSE_STATUS"] == "SETTLEMENT_FAILED"
+    assert "maximum" in response["RESPONSE_MESSAGE"].lower()

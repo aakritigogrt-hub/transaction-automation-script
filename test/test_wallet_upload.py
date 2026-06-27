@@ -3,18 +3,17 @@ import uuid
 import pytest
 import time
 from datetime import datetime, timedelta
+from ..config.base_url import BASE_URL
 
 # =========================
 # CONFIG
 # =========================
 
-BASE_URL = "https://preprod.admin.kwicpe.com/api/v1"
+LOGIN_URL = f"{BASE_URL}/api/v1/admin/auth/login"
+FUND_LOAD_URL = f"{BASE_URL}/api/v1/fundLoad/add"
+TXN_URL = f"{BASE_URL}/api/v1/admin/transactions/get-monthly-transaction-by-id"
 
-LOGIN_URL = f"{BASE_URL}/admin/auth/login"
-FUND_LOAD_URL = f"{BASE_URL}/fundLoad/add"
-TXN_URL = f"{BASE_URL}/admin/transactions/get-monthly-transaction-by-id"
-
-USER_ID = "39a898fa-242a-4c09-a181-17548848df5c"
+USER_ID = "a4771c54-c449-4616-b665-90cd0242b3f7"
 
 LOGIN_PAYLOAD = {
     "email": "super@gmail.com",
@@ -133,7 +132,7 @@ def test_wallet_fund_flow(auth_token):
     print(f"\nWallet BEFORE: {before_balance}")
 
     # Step 2: Add fund
-    amount_to_add = 100
+    amount_to_add = 1000
     add_fund(token, amount_to_add)
 
     # Step 3: Wait for update

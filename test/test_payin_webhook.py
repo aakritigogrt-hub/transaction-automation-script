@@ -4,12 +4,13 @@ import requests
 import uuid
 import logging
 from ..config.headers import HEADERS
+from ..config.base_url import BASE_URL
 # -------------------------
 # CONFIG
 # -------------------------
 
-PAYIN_URL = "https://preprod.admin.kwicpe.com/api/v1/payments/requests"
-WEBHOOK_URL = "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payin-data"
+PAYIN_URL = f"{BASE_URL}/api/v1/payments/requests"
+WEBHOOK_URL = f"{BASE_URL}/api/v1/webhooks/get-webhook-payin-data"
 
 TIMEOUT = 15
 

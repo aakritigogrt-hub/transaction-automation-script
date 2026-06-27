@@ -5,13 +5,10 @@ import random
 import time
 import json
 from ..config.headers import HEADERS
-
+from ..config.base_url import BASE_URL
 # =========================
 # CONFIG
 # =========================
-
-BASE_URL = "https://staging.admin.kwicpe.com/api/api/v1"
-
 LOGIN_URL = f"{BASE_URL}/admin/auth/login"
 BALANCE_URL = f"{BASE_URL}/admin/transactions/get-admin-balance"
 TXN_URL = f"{BASE_URL}/admin/transactions/get-transaction-by-id"
@@ -39,7 +36,7 @@ USER_ID = "26ee893c-4531-4905-bf8e-9fdc2b5c07e1"
 def get_token():
     payload = {
         "email": "super@gmail.com",
-        "password": "Admin@12345",
+        "password": "Admin@123",
         "recaptchaToken": "dummy_token"
     }
 
@@ -137,7 +134,7 @@ def send_webhook(payin):
         "RESPONSE_MESSAGE": "Transaction success",
         "TRANSACTION_ID": f"txn_{uuid.uuid4().hex[:6]}",
         "vpa": "",
-         "UTR": "34658769"
+         "UTR": "34659769"
     }
 
     try:

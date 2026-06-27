@@ -3,31 +3,28 @@ import pytest
 import random
 import uuid
 from ..config.headers import HEADERS
+from ..config.base_url import BASE_URL
 # =====================================================
 # CONFIG
 # =====================================================
 
-LOGIN_URL = "https://staging.admin.kwicpe.com/api/api/v1/admin/auth/login"
+LOGIN_URL = f"{BASE_URL}/api/v1/admin/auth/login"
 
 GET_BALANCE_URL = (
-    "https://staging.admin.kwicpe.com/api/api/v1/"
-    "wallet/get-provider-avilable-balance?page=1"
+    f"{BASE_URL}/api/v1/wallet/get-provider-avilable-balance?page=1"
 )
 
 PAYOUT_URL = (
-    "https://staging.admin.kwicpe.com/api/api/v1/payout/initiate"
+    f"{BASE_URL}/api/v1/payout/initiate"
 )
 
-EMAIL = "super@gmail.com"
-PASSWORD = "Admin@12345"
 
-# PROVIDER_ID = "8bb39faf-bf01-4519-89a5-2742f98a2749"- stage -pay
-PROVIDER_ID="f96b5e7d-fd91-4238-87d2-f51b0bb6b7ca"
+PROVIDER_ID="13a7d37b-f2ca-4848-ba5b-6ae900451b2d"
 HEADERS_1 = {
     "accept": "application/json",
     "content-type": "application/json",
     "x-skip": "true",
-     "skipCaptcha": "true"
+    "skipCaptcha": "true"
 }
 
 # =====================================================
@@ -37,7 +34,7 @@ HEADERS_1 = {
 def get_token():
     payload = {
         "email": "super@gmail.com",
-        "password": "Admin@12345",
+        "password": "Admin@123",
         "recaptchaToken": "dummy_token"
     }
 
@@ -186,7 +183,7 @@ def verify_provider_balance_after_payout(
             response.get("COMMISSION")
         )
     except:
-        commission = 5
+        commission = 10
 
     print(f"\n✅ COMMISSION : {commission}")
 

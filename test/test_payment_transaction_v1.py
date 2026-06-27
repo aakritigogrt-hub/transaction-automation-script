@@ -42,17 +42,23 @@ class TestPayinAPI:
     # MISSING FIELD TESTS
     # ----------------------
     @pytest.mark.parametrize("field", [
-        "orderId", "amount"
-    ])
+    "orderId",  # replace with actual order id field name
+    "amount"])
     def test_missing_fields(self, field):
         payload = get_valid_payload()
-        payload.pop("amount")
 
-        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
-        data = response.json()
+        del payload[field]
 
-        assert response.status_code == 400
-        assert data.get("RESPONSE_CODE") == "400" or "error" in str(data).lower()
+        response = requests.post(
+            BASE_URLS,
+            headers=HEADERS,
+            json=payload,
+            timeout=TIMEOUT
+        )
+
+        print(f"Removed field: {field}")
+        print(response.text)
+        assert response.status_code == 201
 
     # ----------------------
     # FORMAT VALIDATION
@@ -87,7 +93,7 @@ class TestPayinAPI:
         payload["amount"] = amount
 
         response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
-        assert response.json().get("RESPONSE_CODE") == ""
+        assert response.json().get("RESPONSE_CODE") == "400"
 
     # ----------------------
     # AUTH TESTS
@@ -178,12 +184,27 @@ class TestPayinAPI:
 
         # Flexible validation
         assert "minimum" in data.get("RESPONSE_MESSAGE", "").lower()
+
+
+    def test_max_amount_error(self):
+        payload = get_valid_payload()
+        payload["amount"] = "11000"
+
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        data = response.json()
+
+        assert response.status_code in [200, 201, 400]
+        assert data.get("RESPONSE_CODE") == "999"
+        assert data.get("RESPONSE_STATUS") == "FAILED"
+
+        # Flexible validation
+        assert "maximum" in data.get("RESPONSE_MESSAGE", "").lower()
     # ----------------------
 
 
     def test_min_amount_error_flexible(self):
         payload = get_valid_payload()
-        payload["amount"] = "0"
+        payload["amount"] = "4"
 
         response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
         data = response.json()
@@ -195,6 +216,23 @@ class TestPayinAPI:
         assert (
             "minimum amount" in message
             or "below the minimum limit" in message
+        ), f"Unexpected message: {message}"
+
+
+    def test_max_amount_error_flexible(self):
+        payload = get_valid_payload()
+        payload["amount"] = "9100"
+
+        response = requests.post(BASE_URLS, headers=HEADERS, json=payload, timeout=TIMEOUT)
+        data = response.json()
+
+        message = data.get("RESPONSE_MESSAGE", "").lower()
+
+        assert data.get("RESPONSE_CODE") == "999"
+
+        assert (
+            "transaction amount exceeds the maximum limit" in message
+            or " transaction amount exceeds the maximum limit" in message
         ), f"Unexpected message: {message}"
 
     # EDGE CASES

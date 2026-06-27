@@ -10,13 +10,14 @@ import uuid
 import random
 import logging
 from ..config.headers import HEADERS
+from ..config.base_url import BASE_URL
 
 # =========================
 # CONFIG
 # =========================
 
-PAYOUT_URL = "https://preprod.admin.kwicpe.com/api/v1/payout/initiate"
-WEBHOOK_URL = "https://preprod.admin.kwicpe.com/api/v1/webhooks/get-webhook-payout-data"
+PAYOUT_URL = f"{BASE_URL}/api/v1/payout/initiate"
+WEBHOOK_URL = f"{BASE_URL}/api/v1/webhooks/get-webhook-payout-data"
 
 
 

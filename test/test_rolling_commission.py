@@ -6,20 +6,19 @@ import random
 import time
 
 from ..config.headers import HEADERS
-
+from ..config.base_url import BASE_URL
 # -------------------------
 # CONFIG
 # -------------------------
-LOGIN_URL = "https://staging.admin.kwicpe.com/api/api/v1/admin/auth/login"
-PAYIN_URL = "https://staging.admin.kwicpe.com/api/api/v1/payments/requests"
+LOGIN_URL = f"{BASE_URL}/api/v1/admin/auth/login"
+PAYIN_URL = f"{BASE_URL}/api/v1/payments/requests"
 
 WEBHOOK_URL = (
-    "https://staging.admin.kwicpe.com/api/api/v1/webhooks/get-webhook-payin-data"
+    f"{BASE_URL}/api/v1/webhooks/get-webhook-payin-data"
 )
 
 ROLLING_RESERVE_URL = (
-    "https://staging.admin.kwicpe.com/api/api/v1/rolling-reserve/"
-    "get-rolling-reserve-data?page=1"
+    f"{BASE_URL}/api/v1/rolling-reserve/get-rolling-reserve-data?page=1"
 )
 
 TIMEOUT = (30,60)
@@ -39,7 +38,7 @@ logger = logging.getLogger(__name__)
 def get_token():
     payload = {
         "email": "super@gmail.com",
-        "password": "Admin@12345",
+        "password": "Admin@123",
         "recaptchaToken": "dummy_token"
     }
 
@@ -68,7 +67,7 @@ def create_payin():
         "customerMobile": f"9{random.randint(100000000, 999999999)}",
         "customerName": "sonita",
         "transactionMode": "UPI_INTENT",
-        "vpa": "stage@ybl"
+        "vpa": "success@ybl"
     }
 
     logger.info(f"Creating Payin: {payload}")
@@ -123,7 +122,7 @@ def test_rolling_reserve_entry_created(
         "AMOUNT": payin_data["AMOUNT"],
         "RESPONSE_MESSAGE": "Transaction success",
         "TRANSACTION_ID": f"txn_{uuid.uuid4().hex[:6]}",
-        "vpa": "stage@ybl"
+        "vpa": "success@ybl"
     }
     print("TIME:", time.time() - start)
     webhook_response = requests.post(
